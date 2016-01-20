@@ -11,6 +11,7 @@
 		466DD1E91C4DF81C0007A5EA /* PatronKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466DD1DE1C4DF81C0007A5EA /* PatronKit.framework */; };
 		466DD1EE1C4DF81C0007A5EA /* PatronKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DD1ED1C4DF81C0007A5EA /* PatronKitTests.swift */; };
 		466DD1FA1C4E91370007A5EA /* PatronManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DD1F91C4E91370007A5EA /* PatronManager.swift */; };
+		46D712F11C4F278E001D5AAF /* PatronKitBlockTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D712F01C4F278E001D5AAF /* PatronKitBlockTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		466DD1ED1C4DF81C0007A5EA /* PatronKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronKitTests.swift; sourceTree = "<group>"; };
 		466DD1EF1C4DF81C0007A5EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		466DD1F91C4E91370007A5EA /* PatronManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatronManager.swift; sourceTree = "<group>"; };
+		46D712F01C4F278E001D5AAF /* PatronKitBlockTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatronKitBlockTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			children = (
 				466DD1E11C4DF81C0007A5EA /* PatronKit.h */,
 				466DD1F91C4E91370007A5EA /* PatronManager.swift */,
+				46D712F01C4F278E001D5AAF /* PatronKitBlockTypes.swift */,
 				466DD1E31C4DF81C0007A5EA /* Info.plist */,
 			);
 			path = PatronKit;
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D712F11C4F278E001D5AAF /* PatronKitBlockTypes.swift in Sources */,
 				466DD1FA1C4E91370007A5EA /* PatronManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
