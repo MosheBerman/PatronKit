@@ -10,6 +10,7 @@
 		466DD1E21C4DF81C0007A5EA /* PatronKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 466DD1E11C4DF81C0007A5EA /* PatronKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		466DD1E91C4DF81C0007A5EA /* PatronKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466DD1DE1C4DF81C0007A5EA /* PatronKit.framework */; };
 		466DD1EE1C4DF81C0007A5EA /* PatronKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DD1ED1C4DF81C0007A5EA /* PatronKitTests.swift */; };
+		466DD1FA1C4E91370007A5EA /* PatronManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DD1F91C4E91370007A5EA /* PatronManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		466DD1E81C4DF81C0007A5EA /* PatronKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PatronKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		466DD1ED1C4DF81C0007A5EA /* PatronKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronKitTests.swift; sourceTree = "<group>"; };
 		466DD1EF1C4DF81C0007A5EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		466DD1F91C4E91370007A5EA /* PatronManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatronManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				466DD1E11C4DF81C0007A5EA /* PatronKit.h */,
+				466DD1F91C4E91370007A5EA /* PatronManager.swift */,
 				466DD1E31C4DF81C0007A5EA /* Info.plist */,
 			);
 			path = PatronKit;
@@ -105,6 +108,7 @@
 			buildConfigurationList = 466DD1F21C4DF81C0007A5EA /* Build configuration list for PBXNativeTarget "PatronKit" */;
 			buildPhases = (
 				466DD1D91C4DF81C0007A5EA /* Sources */,
+				466DD1F81C4E90E30007A5EA /* Increment Build Number */,
 				466DD1DA1C4DF81C0007A5EA /* Frameworks */,
 				466DD1DB1C4DF81C0007A5EA /* Headers */,
 				466DD1DC1C4DF81C0007A5EA /* Resources */,
@@ -189,11 +193,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		466DD1F81C4E90E30007A5EA /* Increment Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Auto Increment Version Script\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		466DD1D91C4DF81C0007A5EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466DD1FA1C4E91370007A5EA /* PatronManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +330,7 @@
 		466DD1F31C4DF81C0007A5EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +341,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mosheberman.PatronKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		466DD1F41C4DF81C0007A5EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -376,6 +401,7 @@
 				466DD1F41C4DF81C0007A5EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		466DD1F51C4DF81C0007A5EA /* Build configuration list for PBXNativeTarget "PatronKitTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +410,7 @@
 				466DD1F71C4DF81C0007A5EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
