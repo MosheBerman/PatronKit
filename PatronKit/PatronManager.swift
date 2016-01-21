@@ -10,23 +10,37 @@ import Foundation
 import CloudKit
 import StoreKit
 
-public class PatronManager {
+public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     // Singleton Access
-    static let sharedManager = PatronManager()
+    public static let sharedManager = PatronManager()
+    
+    // StoreKit
+    public var productIdentifiers : Set<String> = []
+    public var products : [SKProduct] = []
+    private var productsRequest : SKProductsRequest? = nil
     
     // Keys
     private let keyPurchasesOfUser : String = "purchases"
     private let keyUserWhoMadePurchase : String = "userRecordID"
+    private let keyPurchaseDate : String = "purchaseDate"
+    private let keyProductIdentifier : String = "purchaseProductIdentifier"
     
     // CloudKit Accessors
     private let publicDatabase : CKDatabase = CKContainer.defaultContainer().publicCloudDatabase
     private let defaultRecordZone : CKRecordZone = CKRecordZone.defaultRecordZone()
     
     // Completion Handlers
-//    private let fetchProductsCompletionHandler : (() -> Void)? // Change to block.
-//    private let purchasePatronageCompletionHandler : (() -> Void)? // Change to block.
-//    private let restorePurchaseCompletionHandler : (() -> Void)? // Change to block.
+    private var fetchProductsCompletionHandler : FetchProductsCompletionHandler? = nil
+    private var purchasePatronageCompletionHandler : PurchaseCompletionHandler? = nil
+    private var restorePurchaseCompletionHandler : RestorePurchasesCompletionHandler? = nil
+    
+    // MARK: - Designated Initializer
+    
+    private override init() {
+        super.init()
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+    }
     
     // MARK: - Fetching Available Products
     
@@ -34,12 +48,21 @@ public class PatronManager {
 
     Looks up available patronage products and passes them back to the handler.
     
-    - parameter completionHandler : A handler to pass back SKProducts representing patronage levels.
+    - parameter completionHandler : A handler to pass back SKProducts representing patronage levels. If this method is called multiple times in succession, only the last completion handler will be executed.
     
     */
     
-    func fetchAvailablePatronageProducts(withCompletionHandler completionHandler : () -> Void) {
+    func fetchAvailablePatronageProducts(withCompletionHandler completionHandler : FetchProductsCompletionHandler) {
         
+        guard let request : SKProductsRequest = SKProductsRequest(productIdentifiers: self.productIdentifiers) else {
+            return
+        }
+        
+        self.fetchProductsCompletionHandler = completionHandler
+        
+        request.delegate = self
+        self.productsRequest = request
+        request.start()
     }
     
     // MARK: - Purchasing Patronage
@@ -48,10 +71,25 @@ public class PatronManager {
 
     Perform a purchase with the StoreKit API.
     
+    - parameter product : The product to purchase.
+    - parameter completionHandler : A handler to pass back the results of the purchase. If this method is called multiple times in succession, only the last completion handler will be executed.
+    
     */
     
-    func purchaseProduct(product product: SKProduct, withCompletion:() -> Void) {
+    func purchaseProduct(product product: SKProduct, withCompletionHandler completionHandler: PurchaseCompletionHandler) {
         
+        if (!SKPaymentQueue.canMakePayments()) {
+            
+            let error : NSError = NSError(domain: "com.patronkit.purchase.failed", code: -1, userInfo: ["reason" : "The payment queue reported that it cannot make payments."])
+            completionHandler(success:false, error: error)
+            
+            return
+        }
+        
+        self.purchasePatronageCompletionHandler = completionHandler
+        
+        let payment : SKPayment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addPayment(payment)
     }
     
     // MARK: - Restoring Purchases 
@@ -62,17 +100,73 @@ public class PatronManager {
     
     Required by App Store Review, probably a good idea anyway.
     
-    - parameter completionHandler : A callback executed after the restoration finishes, with a boolean describing if the operation failed.
+    - parameter completionHandler : A handler executed after the restoration finishes, with a boolean describing if the operation succeeded. If this method is called multiple times in succession, only the last completion handler will be executed.
 
     */
     
-    // MARK: - Recording a Purchase
-
-    func recordPurchaseOfPatronage(product product : SKProduct, withCompletion completion:() -> Void) {
+    func restorePurchasedProductsWithCompletionHandler(completionHandler handler: RestorePurchasesCompletionHandler) {
+        self.restorePurchaseCompletionHandler = handler
         
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
     }
     
+    // MARK: - Recording a Purchase
+
+    /**
     
+    Records the purchase in iCloud.
+    
+    - parameter product : The product that was purchased.
+    - parameter completion : A completion handler that is called after the operation completes.
+    
+    */
+    
+    func recordPurchaseOfPatronage(payment payment : SKPayment, withCompletion completion:(recorded : Bool) -> Void) {
+        
+        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (recordID : CKRecordID?, error : NSError?) -> Void in
+
+            guard let userRecordID = recordID else {
+                
+                print("Couldn't get a logged in user while recording purchase. Bailing.")
+                
+                completion(recorded: false)
+                
+                return
+                
+            }
+            
+            print("Got user record ID.")
+            
+            
+            self.publicDatabase.fetchRecordWithID(userRecordID, completionHandler: { (userRecord : CKRecord?, error : NSError?) -> Void in
+                
+                if let user = userRecord {
+                    
+                    // Create a purchase
+                    let purchase : CKRecord = CKRecord(recordType: "Purchase", zoneID: self.defaultRecordZone.zoneID)
+                    purchase[self.keyUserWhoMadePurchase] =  user.recordID.recordName
+                    purchase[self.keyPurchaseDate] = NSDate()
+                    purchase[self.keyProductIdentifier] = payment.productIdentifier
+                    
+                    // Add it to iCloud.
+                    let addPurchaseOperation : CKModifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [purchase], recordIDsToDelete: nil);
+                    
+                    addPurchaseOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs : [CKRecordID]?, operationError : NSError?) -> Void in
+                        
+                        completion(recorded: true)
+                        
+                    }
+                    
+                    self.publicDatabase.addOperation(addPurchaseOperation)
+                }
+                else
+                {
+                    print("Got user record ID but failed to get user record.")
+                }
+            })
+        }
+    }
+
     // MARK: - Fetching Patron Counts
     
     /**
@@ -152,6 +246,84 @@ public class PatronManager {
             print("Found \(count) users who purchased since \(date)")
             
             completionHandler(count: count, error: error)
+        }
+    }
+    
+    // MARK: - SKProductsRequestDelegate
+    
+    /**
+    
+    The SKProductsRequestDelegate stores the retrieved products locally then calls the callback.
+    
+    */
+    
+    public func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+
+        self.products = response.products.sort({ (productA : SKProduct, productB : SKProduct) -> Bool in
+
+            let priceA = productA.price.floatValue
+            let priceB = productB.price.floatValue
+            
+            return priceA < priceB
+        })
+        
+        if let handler = self.fetchProductsCompletionHandler {
+            
+            handler(products: response.products, error: nil)
+        }
+        else
+        {
+            print("Received new products, but there's no callback defined.")
+        }
+    }
+    
+    // MARK: - SKPaymentTransactionObserver
+    
+    public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for transaction in transactions {
+            
+            let payment : SKPayment = transaction.payment
+            let state : SKPaymentTransactionState = transaction.transactionState
+            
+            switch state {
+                
+            case.Purchasing:
+                break
+                
+            case .Purchased:
+                
+                self.recordPurchaseOfPatronage(payment: payment, withCompletion: { (recorded : Bool) -> Void in
+                    
+                    if let handler = self.purchasePatronageCompletionHandler
+                    {
+                        handler(success: true, error: nil)
+                    }
+                    
+                })
+
+                break
+                
+            case .Restored:
+
+                if let handler = self.restorePurchaseCompletionHandler
+                {
+                    handler(success: true, error: nil)
+                }
+                
+                break
+                
+            case .Failed:
+                if let handler = self.purchasePatronageCompletionHandler
+                {
+                    handler(success: false, error: transaction.error)
+                }
+                break
+            case .Deferred: break
+                
+            }
+            
+            
         }
     }
 }
