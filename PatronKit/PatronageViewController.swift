@@ -33,7 +33,8 @@ public class PatronageViewController: UITableViewController {
     // MARK: - Common initialization
     
     func commonInit() {
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "com.mosheberman.patronage.cell.default")
+        
+        self.tableView.registerClass(PatronageCellSubtitleKind.self, forCellReuseIdentifier: "com.mosheberman.patronage.cell.default")
         
         numberFormatter.numberStyle = .CurrencyStyle
         dateFormatter.timeStyle = .NoStyle
@@ -42,15 +43,21 @@ public class PatronageViewController: UITableViewController {
         let oneMonth = self.oneUnitBefore(NSDate(), withUnit: NSCalendarUnit.Month)
         
         PatronManager.sharedManager.fetchPatronageExpiration { (date : NSDate?) -> Void in
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+            })
         }
         
         PatronManager.sharedManager.fetchPatronCountSince(date: oneMonth) { (count, error) -> Void in
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            })
         }
         
         PatronManager.sharedManager.fetchAvailablePatronageProducts { (products, error) -> Void in
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            })
         }
     }
     
@@ -165,7 +172,7 @@ public class PatronageViewController: UITableViewController {
         }
         else if section == 1 {
             // Number of patrons
-            if let count = PatronManager.sharedManager.patronCount {
+            if let count = PatronManager.sharedManager.patronCount where count > 0 {
                 title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many poeple donated recently."), count) as String
             }
             else {
@@ -197,6 +204,13 @@ public class PatronageViewController: UITableViewController {
                 
                 PatronManager.sharedManager.purchaseProduct(product: product, withCompletionHandler: { (success, error) -> Void in
                     print("Purchase complete. Success: \(success) Error: \(error)")
+                    self.tableView.reloadData()
+                    
+                    PatronManager.sharedManager.fetchPatronageExpiration(withCompletionHandler: { (expiration : NSDate?) -> Void in
+                        PatronManager.sharedManager.fetchPatronCountSince(date: self.oneUnitBefore(NSDate(), withUnit: .Month), withCompletionHandler: { (count, error) -> Void in
+                            self.tableView.reloadData()
+                        })
+                    })
                 })
                 
             }
