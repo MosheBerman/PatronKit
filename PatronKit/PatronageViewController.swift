@@ -21,7 +21,7 @@ public class PatronageViewController: UITableViewController {
     }
     
     override init(style: UITableViewStyle) {
-        super.init(style: style)
+        super.init(style: .Grouped)
         self.commonInit()
     }
     
@@ -77,7 +77,7 @@ public class PatronageViewController: UITableViewController {
                 
                 let product : SKProduct = PatronManager.sharedManager.products[indexPath.row]
                 
-                let title : String = product.localizedDescription
+                let title : String = product.localizedTitle
                 var price : String? = NSLocalizedString("---", comment: "A label for when the price isn't available.")
                 
                 if let productPrice = self.numberFormatter.stringFromNumber(product.price) {
@@ -87,6 +87,7 @@ public class PatronageViewController: UITableViewController {
                 
                 cell.textLabel?.text = title
                 cell.detailTextLabel?.text = price
+                cell.accessoryType = .DisclosureIndicator
             }
         }
         else if indexPath.section == 2 {
@@ -164,10 +165,16 @@ public class PatronageViewController: UITableViewController {
         }
         else if section == 1 {
             // Number of patrons
-            title = "\(PatronManager.sharedManager.patronCount) became patrons recently."
+            if let count = PatronManager.sharedManager.patronCount {
+                title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many poeple donated recently."), count) as String
+            }
+            else {
+                title = NSLocalizedString("Be the first to become a patron!", comment: "A comment encouraging users to become patrons.")
+            }
         }
         else if section == 2 {
             // Restore/auto-renew disclaimer
+            title = NSLocalizedString("Purchases credit the account in use at the time of purchase and can't be transferred.\n\nThese one-time purchases do not auto-renew.", comment: "An explanation of how the purchases work.")
         }
         
         return title
