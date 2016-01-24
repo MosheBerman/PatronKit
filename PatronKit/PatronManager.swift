@@ -15,15 +15,23 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     // Singleton Access
     public static let sharedManager = PatronManager()
     
+    // Patronage Stats
+    public var expirationDate : NSDate? = nil
+    public var patronCount : Int? = nil
+    public var reviewCount : Int? = nil
+    
     // StoreKit
     public var productIdentifiers : Set<String> = []
     public var products : [SKProduct] = []
+    public var appID : String? = nil
+    
+    // StoreKit Private
     private var productsRequest : SKProductsRequest? = nil
     
-    // Keys
+    // Keys - used for CKRecord objects.
     private let keyPurchasesOfUser : String = "purchases"
     private let keyUserWhoMadePurchase : String = "userRecordID"
-    private let keyProductIdentifier : String "productIdentifier"
+    private let keyProductIdentifier : String = "productIdentifier"
     private let keyPurchaseDate : String = "purchaseDate"
     private let keyExpirationDate : String = "expirationDate"
     
@@ -232,11 +240,13 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     /**
     
-    Fetches all of the purchases since a given date, then grabs the recordIDs of the related users.
+     Fetches all of the purchases since a given date, then grabs the recordIDs of the related users. Returns the number of unique IDs.
+     
+     - parameter completionHandler: A callback which is executed after we successfully or unsuccessfully count the number of patrons.
     
     */
     
-    func fetchPatronCountSince(date date: NSDate, withCompletionHandler completionHandler: (count : NSInteger, error : NSError?) -> Void) {
+    func fetchPatronCountSince(date date: NSDate, withCompletionHandler completionHandler: (count : NSInteger?, error : NSError?) -> Void) {
         
         let predicate : NSPredicate = NSPredicate(format: "creationDate > %@ || (date = nil)", date)
         let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
@@ -275,9 +285,11 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
 
     Iterate the expiration dates for the current user and find the latest one.
     
+    - parameter completionHandler : A handler which returns either an expiration date, or nil.
+    
     */
     
-    func fetchPatronageExpiration(withCompletionHandler handler: (NSDate?) -> Void) {
+    func fetchPatronageExpiration(withCompletionHandler completionHandler: (NSDate?) -> Void) {
         
         CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (userRecordID : CKRecordID?, error : NSError?) -> Void in
             
@@ -309,7 +321,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                     }
                 }
                 
-                handler(expirationDate)
+                completionHandler(expirationDate)
             })
         }
     }
@@ -329,7 +341,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    func expirationDateForPayment(payment payment: SKPayment, withPurchaseDate date: NSDate) -> NSDate? {
+    private func expirationDateForPayment(payment payment: SKPayment, withPurchaseDate date: NSDate) -> NSDate? {
     
         var expirationDate : NSDate? = nil
         
