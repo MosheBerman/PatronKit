@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class PatronageViewController: UITableViewController {
+public class PatronageViewController: UITableViewController {
     
     var numberFormatter : NSNumberFormatter = NSNumberFormatter()
     var dateFormatter : NSDateFormatter = NSDateFormatter()
@@ -25,7 +25,7 @@ class PatronageViewController: UITableViewController {
         self.commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.commonInit()
     }
@@ -56,7 +56,7 @@ class PatronageViewController: UITableViewController {
     
     // MARK: - UITableViewDataSource
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("com.mosheberman.patronage.cell.default", forIndexPath: indexPath)
         
@@ -97,11 +97,11 @@ class PatronageViewController: UITableViewController {
         return cell
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3 // Why patronage, products, restore purchases
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         var count : Int = 0
         
@@ -125,7 +125,7 @@ class PatronageViewController: UITableViewController {
         return count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         var title : String? = nil
         
@@ -152,7 +152,7 @@ class PatronageViewController: UITableViewController {
         return title
     }
     
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         
         var title : String? = nil
         
@@ -175,7 +175,7 @@ class PatronageViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
