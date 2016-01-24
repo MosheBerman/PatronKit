@@ -51,7 +51,6 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     private override init() {
         super.init()
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
     }
     
     // MARK: - Fetching Available Products
@@ -97,6 +96,8 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             
             return
         }
+        
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         
         self.purchasePatronageCompletionHandler = completionHandler
         
@@ -248,7 +249,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     func fetchPatronCountSince(date date: NSDate, withCompletionHandler completionHandler: (count : NSInteger?, error : NSError?) -> Void) {
         
-        let predicate : NSPredicate = NSPredicate(format: "creationDate > %@ || (date = nil)", date)
+        let predicate : NSPredicate = NSPredicate(format: "creationDate > %@ ", date)
         let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
         
         self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : NSError?) -> Void in
@@ -275,6 +276,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             
             print("Found \(count) users who purchased since \(date)")
             
+            self.patronCount = count
             completionHandler(count: count, error: error)
         }
     }
@@ -293,7 +295,15 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
         
         CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (userRecordID : CKRecordID?, error : NSError?) -> Void in
             
-            let predicate : NSPredicate = NSPredicate(format: "\(self.keyUserWhoMadePurchase) == \(userRecordID)")
+            guard let userRecordName = userRecordID?.recordName else {
+                
+                print("Couldn't unwrap the CKRecordID for the user record.")
+                completionHandler(nil)
+                
+                return
+            }
+            
+            let predicate : NSPredicate = NSPredicate(format: "\(self.keyUserWhoMadePurchase) == %@", userRecordName)
             let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
             
             self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID, completionHandler: { (records : [CKRecord]?, error : NSError?) -> Void in
