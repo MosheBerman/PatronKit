@@ -11,7 +11,9 @@ import StoreKit
 
 class PatronageViewController: UITableViewController {
     
-    var formatter : NSNumberFormatter = NSNumberFormatter()
+    var numberFormatter : NSNumberFormatter = NSNumberFormatter()
+    var dateFormatter : NSDateFormatter = NSDateFormatter()
+    var calendar : NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -33,7 +35,23 @@ class PatronageViewController: UITableViewController {
     func commonInit() {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "com.mosheberman.patronage.cell.default")
         
-        formatter.numberStyle = .CurrencyStyle
+        numberFormatter.numberStyle = .CurrencyStyle
+        dateFormatter.timeStyle = .NoStyle
+        dateFormatter.dateStyle = .MediumStyle
+        
+        let oneMonth = self.oneUnitBefore(NSDate(), withUnit: NSCalendarUnit.Month)
+        
+        PatronManager.sharedManager.fetchPatronageExpiration { (date : NSDate?) -> Void in
+            self.tableView.reloadData()
+        }
+        
+        PatronManager.sharedManager.fetchPatronCountSince(date: oneMonth) { (count, error) -> Void in
+            self.tableView.reloadData()
+        }
+        
+        PatronManager.sharedManager.fetchAvailablePatronageProducts { (products, error) -> Void in
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -62,7 +80,7 @@ class PatronageViewController: UITableViewController {
                 let title : String = product.localizedDescription
                 var price : String? = NSLocalizedString("---", comment: "A label for when the price isn't available.")
                 
-                if let productPrice = self.formatter.stringFromNumber(product.price) {
+                if let productPrice = self.numberFormatter.stringFromNumber(product.price) {
                     price = productPrice
                 }
                 
@@ -140,9 +158,13 @@ class PatronageViewController: UITableViewController {
         
         if section == 0 {
             // Patronage end date
+            if let expirationDate = PatronManager.sharedManager.expirationDate {
+                title = "Patron through \(self.dateFormatter.stringFromDate(expirationDate)) ❤️"
+            }
         }
         else if section == 1 {
             // Number of patrons
+            title = "\(PatronManager.sharedManager.patronCount) became patrons recently."
         }
         else if section == 2 {
             // Restore/auto-renew disclaimer
@@ -180,4 +202,22 @@ class PatronageViewController: UITableViewController {
         
     }
     
+    
+    // MARK: - Helpers
+    
+    /**
+
+    Gets the date 1 calendar unit ago.
+    
+    - parameter date : The date to start from.
+    - parameter unit : The unit to subtract.
+    
+    - returns: An NSDate that is one unit prior to the origal date.
+    
+    */
+    
+    func oneUnitBefore(date: NSDate, withUnit unit: NSCalendarUnit) -> NSDate {
+        
+        return self.calendar.dateByAddingUnit(unit, value: -1, toDate: date, options: NSCalendarOptions.WrapComponents)!
+    }
 }
