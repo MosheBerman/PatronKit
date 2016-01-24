@@ -117,10 +117,18 @@ class PatronageViewController: UITableViewController {
         }
         else if section == 1 {
             // Become/Extend
-            
+            if let _ = PatronManager.sharedManager.expirationDate {
+                
+                title = NSLocalizedString("Extend Your Patronage", comment: "A title for the patronage list encouraging returning patrons to donate again.")
+                
+            }
+            else
+            {
+                title = NSLocalizedString("Become a Patron", comment: "A title for the patronage list encouraging first time patrons to donate.")
+            }
         }
         else if section == 2 {
-            // nil
+             title = nil
         }
         
         return title
