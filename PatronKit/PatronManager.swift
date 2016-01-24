@@ -326,7 +326,61 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
         }
     }
     
-    // MARK: - Calculating an Expiration Date
+    // MARK: - Counting App Reviews
+    
+    func fetchNumberOfAppReviews(withCompletionHandler completionHandler : (reviews : NSInteger?, error : NSError?) -> Void) {
+        
+        if let url : NSURL = NSURL(string: "https://itunes.apple.com/lookup?id=\(self.appID)") {
+         
+            let request : NSURLRequest = NSURLRequest(URL: url)
+            let session : NSURLSession = NSURLSession.sharedSession()
+            let task : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (data : NSData?, respone : NSURLResponse?, error: NSError?) -> Void in
+                
+                var count : Int? = nil;
+        
+                
+                if let responseDate = data {
+                    do {
+                        
+                        if let results : Dictionary<String, AnyObject> = try NSJSONSerialization.JSONObjectWithData(responseDate, options: []) as? Dictionary<String, AnyObject> {
+                            
+                            if let resultSet : [[String : AnyObject]] = results["results"] as? [[String : AnyObject]] {
+                            
+                                if let appData : [String : AnyObject] = resultSet.first {
+                                    
+                                    if let reviewCount = appData["userRatingCountForCurrentVersion"] as? Int {
+                                        count = reviewCount
+                                    }
+                                    else
+                                    {
+                                        print("Failed to read review count for current version.")
+                                    }
+                                }
+                                else
+                                {
+                                    print("Failed to read results from app query.")
+                                }
+                            }
+                            else {
+                                print("Failed to cast search results to a useful type.")
+                            }
+                        }
+                    }
+                    catch let e as NSError {
+                        print("Failed to deserialize response. \(e)")
+                    }
+                }
+                
+                self.reviewCount = count
+                completionHandler(reviews: count, error:  error)
+            })
+            
+            task.resume()
+            
+        }
+    }
+    
+    // MARK: - Helpers
     
     /** 
 
