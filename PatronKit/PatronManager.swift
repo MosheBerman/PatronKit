@@ -23,8 +23,9 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     // Keys
     private let keyPurchasesOfUser : String = "purchases"
     private let keyUserWhoMadePurchase : String = "userRecordID"
+    private let keyProductIdentifier : String "productIdentifier"
     private let keyPurchaseDate : String = "purchaseDate"
-    private let keyProductIdentifier : String = "purchaseProductIdentifier"
+    private let keyExpirationDate : String = "expirationDate"
     
     // CloudKit Accessors
     private let publicDatabase : CKDatabase = CKContainer.defaultContainer().publicCloudDatabase
@@ -34,6 +35,9 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     private var fetchProductsCompletionHandler : FetchProductsCompletionHandler? = nil
     private var purchasePatronageCompletionHandler : PurchaseCompletionHandler? = nil
     private var restorePurchaseCompletionHandler : RestorePurchasesCompletionHandler? = nil
+    
+    // Date calculation
+    let gregorianCalendar : NSCalendar? = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     
     // MARK: - Designated Initializer
     
@@ -137,33 +141,49 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             
             print("Got user record ID.")
             
-            
+            // Get the current user.
             self.publicDatabase.fetchRecordWithID(userRecordID, completionHandler: { (userRecord : CKRecord?, error : NSError?) -> Void in
                 
                 if let user = userRecord {
                     
-                    // Create a purchase
-                    let purchase : CKRecord = CKRecord(recordType: "Purchase", zoneID: self.defaultRecordZone.zoneID)
-                    purchase[self.keyUserWhoMadePurchase] =  user.recordID.recordName
-                    purchase[self.keyPurchaseDate] = NSDate()
-                    purchase[self.keyProductIdentifier] = payment.productIdentifier
-                    
-                    // Add it to iCloud.
-                    let addPurchaseOperation : CKModifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [purchase], recordIDsToDelete: nil);
-                    
-                    addPurchaseOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs : [CKRecordID]?, operationError : NSError?) -> Void in
+                    // Get the previous expiration, in case the user is extending support.
+                    self.fetchPatronageExpiration(withCompletionHandler: { (expirationDate : NSDate?) -> Void in
                         
-                        completion(recorded: true)
+                        var purchaseDate = NSDate()
                         
-                    }
-                    
-                    self.publicDatabase.addOperation(addPurchaseOperation)
+                        // If there's an expiration date that's in the future, use that date as the purchase date.
+                        if let fetchedExpirationDate = expirationDate {
+                            if fetchedExpirationDate.timeIntervalSinceDate(purchaseDate) > 0 {
+                                purchaseDate = fetchedExpirationDate
+                            }
+                        }
+                        
+                        // Create a purchase
+                        let purchase : CKRecord = CKRecord(recordType: "Purchase", zoneID: self.defaultRecordZone.zoneID)
+                        purchase[self.keyUserWhoMadePurchase] =  user.recordID.recordName
+                        purchase[self.keyPurchaseDate] = purchaseDate
+                        purchase[self.keyProductIdentifier] = payment.productIdentifier
+                        purchase[self.keyExpirationDate] = self.expirationDateForPayment(payment: payment, withPurchaseDate: purchaseDate)
+                        
+                        // Add it to iCloud.
+                        let addPurchaseOperation : CKModifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [purchase], recordIDsToDelete: nil);
+                        
+                        addPurchaseOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs : [CKRecordID]?, operationError : NSError?) -> Void in
+                            
+                            completion(recorded: true)
+                            
+                        }
+                        
+                        self.publicDatabase.addOperation(addPurchaseOperation)
+                    })
                 }
                 else
                 {
+                    completion(recorded: false)
                     print("Got user record ID but failed to get user record.")
                 }
             })
+
         }
     }
 
@@ -179,7 +199,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     func fetchPatronCountWithCompletion(completionHandler completionHandler: (count : NSInteger, error : NSError?) -> Void) {
         
-        let predicate : NSPredicate = NSPredicate(format: "TRUEFORMAT") // The documentation
+        let predicate : NSPredicate = NSPredicate(format: "TRUEFORMAT") // The documentation says to use this for "all of the given type."
         let query : CKQuery = CKQuery(recordType: "User", predicate: predicate)
         
         self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : NSError?) -> Void in
@@ -247,6 +267,83 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             
             completionHandler(count: count, error: error)
         }
+    }
+    
+    // MARK: - Checking a User's Patronage status
+    
+    /**
+
+    Iterate the expiration dates for the current user and find the latest one.
+    
+    */
+    
+    func fetchPatronageExpiration(withCompletionHandler handler: (NSDate?) -> Void) {
+        
+        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (userRecordID : CKRecordID?, error : NSError?) -> Void in
+            
+            let predicate : NSPredicate = NSPredicate(format: "\(self.keyUserWhoMadePurchase) == \(userRecordID)")
+            let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
+            
+            self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID, completionHandler: { (records : [CKRecord]?, error : NSError?) -> Void in
+                
+                var expirationDate : NSDate? = nil
+                
+                if let purchases = records {
+                    
+                    for purchase in purchases {
+                        
+                        guard let purchaseExpirationDate = purchase[self.keyExpirationDate] as? NSDate else {
+                            print("Weird, couldn't find a purchase for \(purchase.recordID)")
+                            continue
+                        }
+                        
+                        // If there's no earliest purchase date
+                        guard let previousExpirationDate = expirationDate else {
+                            expirationDate = purchaseExpirationDate
+                            continue
+                        }
+                        
+                        if purchaseExpirationDate.timeIntervalSinceDate(previousExpirationDate) < 0 {
+                            expirationDate = purchaseExpirationDate
+                        }
+                    }
+                }
+                
+                handler(expirationDate)
+            })
+        }
+    }
+    
+    // MARK: - Calculating an Expiration Date
+    
+    /** 
+
+    Calculates an expiration date based on the kind of payment, and the purchase date.
+    This assumes that your product identifier ends with a period, followed by a number. 
+    We're also assuming that the number represents months, not weeks or days.
+
+    - parameter payment : An SKPayment that was processed by StoreKit.
+    - parameter purchaseDate : The date of purchase.
+    
+    - returns : NSDate if we are able to calculate the date, or nil if there was an error.
+    
+    */
+    
+    func expirationDateForPayment(payment payment: SKPayment, withPurchaseDate date: NSDate) -> NSDate? {
+    
+        var expirationDate : NSDate? = nil
+        
+        if let monthString : String = payment.productIdentifier.componentsSeparatedByString(".").last {
+        
+            if let months : Int = Int(monthString) {
+                let components : NSDateComponents = NSDateComponents()
+                components.month = months
+            
+                expirationDate = self.gregorianCalendar?.dateByAddingComponents(components, toDate: date, options: .WrapComponents)
+            }
+        }
+        
+        return expirationDate
     }
     
     // MARK: - SKProductsRequestDelegate
