@@ -14,6 +14,4 @@ FOUNDATION_EXPORT double PatronKitVersionNumber;
 //! Project version string for PatronKit.
 FOUNDATION_EXPORT const unsigned char PatronKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <PatronKit/PublicHeader.h>
-
-
+// Since this is a Swift framework, use @import PatronKit, instead of this header.
