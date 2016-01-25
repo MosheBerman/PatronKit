@@ -21,7 +21,7 @@ There are five steps to use PatronKit:
 4. Tell PatronKit about your In-App Purchase identifiers
 5. Present an instance of `PatronageViewController`
 
-**Step 1:** Including PatronKit in your project
+**Step 1:** Including PatronKit in Your Project
 
 PatronKit is a dynamic framework, so you should drag the Xcode project into your own, and link against it. PatronKit doesn't support CocoaPods at this time. The usual disclaimers about Swift Package Manager being a work in progress apply. 
 
@@ -50,7 +50,7 @@ You should create a few in-app purchase products with the "consumable" type. The
 
 ![IAPs](./demo/InAppPurchases.png)
 
-**Step 4:** Tell PatronKit about your in-app purchases.
+**Step 4:** Tell PatronKit about your In-App Purchases.
 
 You do this by passing the `PatronManager` an NSSet with your product identifiers, like so:
 
@@ -67,7 +67,7 @@ You do this by passing the `PatronManager` an NSSet with your product identifier
 
 At this point, you're all set up. PatronKit will sort the identifiers for you when it displays the products, from smallest number of months to largest. Now, we just need to show our users the patronage options.
 
-**Step 5:** Showing a `PatronageViewController`
+**Step 5:** Showing a Patronage View Controller
 
 `PatronageViewController` subclasses `UITableViewController`, so you can present it as you wish. (For example, present it modally, or puh it onto a UINavigationController stack. If you present it modally, you'll have to provide your own dismissal method.)
 
@@ -78,6 +78,11 @@ Features:
 - Track when a users patronage expires
 - Encourage users to donate by showing them how many other users already donated
 - Encourage users to rate your app by showing them how many other reviews there are for the current app version. (You have to implement the UI for this by yourself, but fetching the number is built in to `PatronManager`)
+
+To Do:
+---
+[ ] Clever things to make the patron count look good
+[ ] Show the review count somewhere
 
 What is Patronage?
 ---
