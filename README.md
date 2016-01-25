@@ -81,8 +81,8 @@ Features:
 
 To Do:
 ---
-[ ] Clever things to make the patron count look good
-[ ] Show the review count somewhere
+- [ ] Clever things to make the patron count look good
+- [ ] Show the review count somewhere
 
 What is Patronage?
 ---
