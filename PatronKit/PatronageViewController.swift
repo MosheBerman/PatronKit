@@ -70,6 +70,7 @@ public class PatronageViewController: UITableViewController {
         if indexPath.section == 0 {
             cell.textLabel?.text = NSLocalizedString("Why Patronage?", comment: "A title for the cell that when tapped explains patronage.")
             cell.detailTextLabel?.text = nil
+            cell.accessoryType = .DisclosureIndicator
         }
         else if indexPath.section == 1 {
             
@@ -194,7 +195,24 @@ public class PatronageViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.section == 0 {
-            // TODO: Show some explanation of the patronage model.
+            
+            let title = NSLocalizedString("Why Patronage?", comment: "A title for the patronage explaination dialog.")
+            let message = NSLocalizedString("Patronage allows you to enjoy all of the features of this app while allowing app makers to be able to continue to spend their time making your life better. It's a win-win.\n\nThe patronage screen you see in this app is brought to you by PatronKit, by Moshe Berman. PatronKit is inspired by Marco Arment's work in his app, Overcast.", comment: "")
+            
+            let dismissTitle = NSLocalizedString("Dismiss", comment: "A title for a button that dismisses a dialog.")
+            let dismissAction = UIAlertAction(title: dismissTitle, style: .Default, handler: { (action : UIAlertAction) -> Void in
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                })
+            })
+            
+            let alertController : UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            alertController.addAction(dismissAction)
+            
+            self.presentViewController(alertController, animated: true, completion: { () -> Void in
+                
+            })
+            
         }
         else if indexPath.section == 1 {
             
