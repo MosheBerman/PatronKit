@@ -62,7 +62,7 @@ You do this by passing the `PatronManager` an NSSet with your product identifier
 
 *Objective-C:*
 
-    NSSet *identifiers = [NSSet setWithArray:@[@"com.mosheberman.patronapp.3", @"com.mosheberman.patronapp.6", @"com.mosheberman.patronapp.12"]];
+    NSSet *identifiers = [NSSet setWithArray:@[@"com.patronkit.3", @"com.patronkit.6", @"com.patronkit.12"]];
     [[PatronManager sharedManager] setProductIdentifiers:identifiers;
 
 At this point, you're all set up. PatronKit will sort the identifiers for you when it displays the products, from smallest number of months to largest. Now, we just need to show our users the patronage options.
