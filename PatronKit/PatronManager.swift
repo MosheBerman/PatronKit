@@ -148,8 +148,6 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                 
             }
             
-            print("Got user record ID.")
-            
             // Get the current user.
             self.publicDatabase.fetchRecordWithID(userRecordID, completionHandler: { (userRecord : CKRecord?, error : NSError?) -> Void in
                 
@@ -162,9 +160,17 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                         
                         // If there's an expiration date that's in the future, use that date as the purchase date.
                         if let fetchedExpirationDate = expirationDate {
+
                             if fetchedExpirationDate.timeIntervalSinceDate(purchaseDate) > 0 {
                                 purchaseDate = fetchedExpirationDate
                             }
+                            else
+                            {
+                               "The fetched expiry is in the past, keeping current date as starting point."
+                            }
+                        }
+                        else {
+                            print("Failed to fetch expiration date.")
                         }
                         
                         // Create a purchase
@@ -249,16 +255,17 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     func fetchPatronCountSince(date date: NSDate, withCompletionHandler completionHandler: (count : NSInteger?, error : NSError?) -> Void) {
         
-        let predicate : NSPredicate = NSPredicate(format: "creationDate > %@ ", date)
+        let predicate : NSPredicate = NSPredicate(format: "purchaseDate > %@ ", date)
         let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
         
         self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : NSError?) -> Void in
             
-            var userIDs : Set<CKRecordID> = Set()
+            var userIDs : Set<String> = Set()
             
             if let records = records {
+                
                 for purchase : CKRecord in records {
-                    if let userID = purchase[self.keyUserWhoMadePurchase] as? CKRecordID {
+                    if let userID = purchase[self.keyUserWhoMadePurchase] as? String {
                         userIDs.insert(userID)
                     }
                     else
@@ -273,9 +280,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             }
             
             let count = userIDs.count
-            
-            print("Found \(count) users who purchased since \(date)")
-            
+
             self.patronCount = count
             completionHandler(count: count, error: error)
         }
@@ -303,7 +308,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                 return
             }
             
-            let predicate : NSPredicate = NSPredicate(format: "\(self.keyUserWhoMadePurchase) == %@", userRecordName)
+            let predicate : NSPredicate = NSPredicate(format: "\(self.keyUserWhoMadePurchase) == %@ ", userRecordName)
             let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
             
             self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID, completionHandler: { (records : [CKRecord]?, error : NSError?) -> Void in
@@ -315,22 +320,29 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                     for purchase in purchases {
                         
                         guard let purchaseExpirationDate = purchase[self.keyExpirationDate] as? NSDate else {
-                            print("Weird, couldn't find a purchase for \(purchase.recordID)")
+                            print("Weird, couldn't find an expiration date for \(purchase.recordID).")
                             continue
                         }
                         
                         // If there's no earliest purchase date
                         guard let previousExpirationDate = expirationDate else {
                             expirationDate = purchaseExpirationDate
+                            
                             continue
                         }
                         
-                        if purchaseExpirationDate.timeIntervalSinceDate(previousExpirationDate) < 0 {
+                        if purchaseExpirationDate.timeIntervalSinceDate(previousExpirationDate) > 0 {
+                            print("\(purchaseExpirationDate) is after \(previousExpirationDate)")
                             expirationDate = purchaseExpirationDate
                         }
                     }
                 }
+                else {
+                    print("Found no prior purchases for user.")
+                }
                 
+                print("Latest expiration date \(expirationDate)")
+                self.expirationDate = expirationDate
                 completionHandler(expirationDate)
             })
         }
@@ -415,7 +427,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                 let components : NSDateComponents = NSDateComponents()
                 components.month = months
             
-                expirationDate = self.gregorianCalendar?.dateByAddingComponents(components, toDate: date, options: .WrapComponents)
+                expirationDate = self.gregorianCalendar?.dateByAddingComponents(components, toDate: date, options: [])
             }
         }
         
@@ -465,6 +477,8 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                 break
                 
             case .Purchased:
+                
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
                 
                 self.recordPurchaseOfPatronage(payment: payment, withCompletion: { (recorded : Bool) -> Void in
                     
