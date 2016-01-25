@@ -77,7 +77,7 @@ public class PatronageViewController: UITableViewController {
             
             if count == 0 /* there are no products  */
             {
-                cell.textLabel?.text = NSLocalizedString("Loading Patronage Levels...", comment: "A title for a cell that is loading patronage information.")
+                cell.textLabel?.text = NSLocalizedString("Loading Patronage Options...", comment: "A title for a cell that is loading patronage information.")
                 cell.detailTextLabel?.text = nil
             }
             else {
@@ -90,7 +90,6 @@ public class PatronageViewController: UITableViewController {
                 if let productPrice = self.numberFormatter.stringFromNumber(product.price) {
                     price = productPrice
                 }
-                
                 
                 cell.textLabel?.text = title
                 cell.detailTextLabel?.text = price
@@ -144,9 +143,7 @@ public class PatronageViewController: UITableViewController {
         else if section == 1 {
             // Become/Extend
             if let _ = PatronManager.sharedManager.expirationDate {
-                
                 title = NSLocalizedString("Extend Your Patronage", comment: "A title for the patronage list encouraging returning patrons to donate again.")
-                
             }
             else
             {
@@ -172,8 +169,11 @@ public class PatronageViewController: UITableViewController {
         }
         else if section == 1 {
             // Number of patrons
-            if let count = PatronManager.sharedManager.patronCount where count > 0 {
-                title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many poeple donated recently."), count) as String
+            if let count = PatronManager.sharedManager.patronCount where count > 1 {
+                title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many people donated recently."), count) as String
+            }
+            else if let count = PatronManager.sharedManager.patronCount where count > 0 {
+                title = NSString(format: NSLocalizedString("%li person became a patron recently.", comment: "A string counting how many people donated recently."), count) as String
             }
             else {
                 title = NSLocalizedString("Be the first to become a patron!", comment: "A comment encouraging users to become patrons.")
@@ -202,13 +202,17 @@ public class PatronageViewController: UITableViewController {
                 
                 let product : SKProduct = PatronManager.sharedManager.products[indexPath.row]
                 
+                // Step 1. Perform Purchase
                 PatronManager.sharedManager.purchaseProduct(product: product, withCompletionHandler: { (success, error) -> Void in
-                    print("Purchase complete. Success: \(success) Error: \(error)")
-                    self.tableView.reloadData()
-                    
+                    // Step 2. Fetch new expiration
                     PatronManager.sharedManager.fetchPatronageExpiration(withCompletionHandler: { (expiration : NSDate?) -> Void in
+                        // Step 3. Update patron count
                         PatronManager.sharedManager.fetchPatronCountSince(date: self.oneUnitBefore(NSDate(), withUnit: .Month), withCompletionHandler: { (count, error) -> Void in
-                            self.tableView.reloadData()
+                            // Step 4. Update UI
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0,2)), withRowAnimation: .Automatic)
+                                print("Purchase complete. Success: \(success) Error: \(error)")
+                            })
                         })
                     })
                 })
@@ -217,7 +221,10 @@ public class PatronageViewController: UITableViewController {
         }
         else if indexPath.section == 2 {
             PatronManager.sharedManager.restorePurchasedProductsWithCompletionHandler(completionHandler: { (success, error) -> Void in
-                print("Restore complete. Success: \(success) Error: \(error)")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0,2)), withRowAnimation: .Automatic)
+                    print("Restore complete. Success: \(success) Error: \(error)")
+                })
             })
         }
         
@@ -239,6 +246,6 @@ public class PatronageViewController: UITableViewController {
     
     func oneUnitBefore(date: NSDate, withUnit unit: NSCalendarUnit) -> NSDate {
         
-        return self.calendar.dateByAddingUnit(unit, value: -1, toDate: date, options: NSCalendarOptions.WrapComponents)!
+        return self.calendar.dateByAddingUnit(unit, value: -1, toDate: date, options: [])!
     }
 }
