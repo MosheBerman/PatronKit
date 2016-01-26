@@ -71,6 +71,18 @@ At this point, you're all set up. PatronKit will sort the identifiers for you wh
 
 `PatronageViewController` subclasses `UITableViewController`, so you can present it as you wish. (For example, present it modally, or puh it onto a UINavigationController stack. If you present it modally, you'll have to provide your own dismissal method.)
 
+Getting App Review Counts:
+----
+Optionally, you can get the number of reviews of your app on the App Store by passing your Apple app ID to PatronManager, by setting the appID property:
+
+*Swift:*
+
+    PatronManager.sharedManager.appID = "xxxxxx"
+    
+*Objective-C:*
+
+	 PatronManager.sharedManager.appID = @"xxxxxx"
+	    
 Features:
 ---
 
