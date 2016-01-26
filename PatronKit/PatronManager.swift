@@ -17,13 +17,13 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     // Patronage Stats
     public var expirationDate : NSDate? = nil
-    public var patronCount : Int? = nil
-    public var reviewCount : Int? = nil
+    public var patronCount : Int = 0
+    public var reviewCount : Int = 0
     
     // StoreKit
     public var productIdentifiers : Set<String> = []
     public var products : [SKProduct] = []
-    public var appID : String? = nil
+    public var appID : NSString? = nil
     
     // StoreKit Private
     private var productsRequest : SKProductsRequest? = nil
@@ -358,7 +358,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             let session : NSURLSession = NSURLSession.sharedSession()
             let task : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (data : NSData?, respone : NSURLResponse?, error: NSError?) -> Void in
                 
-                var count : Int? = nil;
+                var count : Int = 0
         
                 
                 if let responseDate = data {
