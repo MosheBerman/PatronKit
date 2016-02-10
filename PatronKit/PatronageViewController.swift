@@ -68,11 +68,6 @@ public class PatronageViewController: UITableViewController {
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("com.mosheberman.patronage.cell.default", forIndexPath: indexPath)
         
         if indexPath.section == 0 {
-            cell.textLabel?.text = NSLocalizedString("Why Patronage?", comment: "A title for the cell that when tapped explains patronage.")
-            cell.detailTextLabel?.text = nil
-            cell.accessoryType = .DisclosureIndicator
-        }
-        else if indexPath.section == 1 {
             
             let count : Int = PatronManager.sharedManager.products.count
             
@@ -97,7 +92,7 @@ public class PatronageViewController: UITableViewController {
                 cell.accessoryType = .DisclosureIndicator
             }
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 1 {
             cell.textLabel?.text = NSLocalizedString("Restore Purchases", comment: "A label a button that restores previous purchases.")
             cell.detailTextLabel?.text = nil
         }
@@ -106,7 +101,7 @@ public class PatronageViewController: UITableViewController {
     }
     
     override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3 // Why patronage, products, restore purchases
+        return 2 // Products, restore purchases
     }
     
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,10 +133,6 @@ public class PatronageViewController: UITableViewController {
         var title : String? = nil
         
         if section == 0 {
-            // Your patronage makes possible.
-            title = NSLocalizedString("Your patronage makes continued development possible. Thank you.", comment: "A thank you message for the patronage.")
-        }
-        else if section == 1 {
             // Become/Extend
             if let _ = PatronManager.sharedManager.expirationDate {
                 title = NSLocalizedString("Extend Your Patronage", comment: "A title for the patronage list encouraging returning patrons to donate again.")
@@ -151,7 +142,7 @@ public class PatronageViewController: UITableViewController {
                 title = NSLocalizedString("Become a Patron", comment: "A title for the patronage list encouraging first time patrons to donate.")
             }
         }
-        else if section == 2 {
+        else if section == 1 {
              title = nil
         }
         
@@ -163,24 +154,21 @@ public class PatronageViewController: UITableViewController {
         var title : String? = nil
         
         if section == 0 {
-            // Patronage end date
-            if let expirationDate = PatronManager.sharedManager.expirationDate {
-                title = "Patron through \(self.dateFormatter.stringFromDate(expirationDate)) ❤️"
-            }
-        }
-        else if section == 1 {
             // Number of patrons
-            if let count = PatronManager.sharedManager.patronCount where count > 1 {
+            
+            let count = PatronManager.sharedManager.patronCount
+            if count > 1 {
+                
                 title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many people donated recently."), count) as String
             }
-            else if let count = PatronManager.sharedManager.patronCount where count > 0 {
+            else if count > 0 {
                 title = NSString(format: NSLocalizedString("%li person became a patron recently.", comment: "A string counting how many people donated recently."), count) as String
             }
             else {
                 title = NSLocalizedString("Be the first to become a patron!", comment: "A comment encouraging users to become patrons.")
             }
         }
-        else if section == 2 {
+        else if section == 1 {
             // Restore/auto-renew disclaimer
             title = NSLocalizedString("Purchases credit the account in use at the time of purchase and can't be transferred.\n\nThese one-time purchases do not auto-renew.", comment: "An explanation of how the purchases work.")
         }
@@ -195,26 +183,6 @@ public class PatronageViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.section == 0 {
-            
-            let title = NSLocalizedString("Why Patronage?", comment: "A title for the patronage explaination dialog.")
-            let message = NSLocalizedString("Patronage allows you to enjoy all of the features of this app while allowing app makers to be able to continue to spend their time making your life better. It's a win-win.\n\nThe patronage screen you see in this app is brought to you by PatronKit, by Moshe Berman. PatronKit is inspired by Marco Arment's work in his app, Overcast.", comment: "")
-            
-            let dismissTitle = NSLocalizedString("Dismiss", comment: "A title for a button that dismisses a dialog.")
-            let dismissAction = UIAlertAction(title: dismissTitle, style: .Default, handler: { (action : UIAlertAction) -> Void in
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    
-                })
-            })
-            
-            let alertController : UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            alertController.addAction(dismissAction)
-            
-            self.presentViewController(alertController, animated: true, completion: { () -> Void in
-                
-            })
-            
-        }
-        else if indexPath.section == 1 {
             
             if PatronManager.sharedManager.products.count > 0 {
                 
@@ -237,7 +205,7 @@ public class PatronageViewController: UITableViewController {
                 
             }
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 1 {
             PatronManager.sharedManager.restorePurchasedProductsWithCompletionHandler(completionHandler: { (success, error) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0,2)), withRowAnimation: .Automatic)
