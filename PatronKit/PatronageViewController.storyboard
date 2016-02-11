@@ -48,11 +48,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.mosheberman.cell.patroncount" id="sCq-dw-oqp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.mosheberman.cell.patroncount" id="sCq-dw-oqp">
                                 <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sCq-dw-oqp" id="svL-cg-qOp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgu-Tt-Y3L">
@@ -65,6 +65,26 @@
                                     <constraints>
                                         <constraint firstItem="fgu-Tt-Y3L" firstAttribute="leading" secondItem="svL-cg-qOp" secondAttribute="leadingMargin" constant="7" id="Eec-lY-e99"/>
                                         <constraint firstItem="fgu-Tt-Y3L" firstAttribute="centerY" secondItem="svL-cg-qOp" secondAttribute="centerY" id="NEB-3o-MUD"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.mosheberman.cell.plain" id="cju-jC-vpD">
+                                <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cju-jC-vpD" id="ypm-kN-pk4">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZj-be-ZDp">
+                                            <rect key="frame" x="15" y="12" width="40" height="20"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JZj-be-ZDp" firstAttribute="leading" secondItem="ypm-kN-pk4" secondAttribute="leadingMargin" constant="7" id="1cG-IQ-GXI"/>
+                                        <constraint firstItem="JZj-be-ZDp" firstAttribute="centerY" secondItem="ypm-kN-pk4" secondAttribute="centerY" id="sDq-UF-Wec"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
