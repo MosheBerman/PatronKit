@@ -8,7 +8,7 @@ PatronKit uses CloudKit to record purchases, and then display tallies back to th
 Features:
 ---
 
-- Offer patronage purchases to your users in a pre-built UI
+- Offer patronage purchases to your users in a pre-built UI (This UI is going to change in a near-future release.)
 - Track when a users patronage expires
 - Showing how many users already donated
 - Show how many reviews there are for the current app version. (You have to implement the UI for this by yourself, but fetching the number is built in to `PatronManager`)
@@ -17,9 +17,9 @@ Features:
 Requirements:
 ---
 
-PatronKit was written with Swift 2 in Xcode 7.2. You can run it on iOS 8.0 or later. If you need to support iOS 7, use the raw Swift files instead of the framework.
+PatronKit was written with Swift 2 in Xcode 7.2. You can run it on iOS 8.0 or later. If you need to support iOS 7, use the raw Swift files (and storyboard) instead of the framework.
 
-Setting it Up:
+Installation & Usage:
 ---
 
 There are five steps to use PatronKit:
