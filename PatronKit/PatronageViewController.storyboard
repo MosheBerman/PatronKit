@@ -9,13 +9,13 @@
         <!--Table View Controller-->
         <scene sceneID="DBl-4l-cwC">
             <objects>
-                <tableViewController id="eEJ-w6-z1d" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="com.patronkit.patronageviewcontroller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eEJ-w6-z1d" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wvK-RX-SJX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.mosheberman.cell.product" id="bKl-nl-dmN">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="bKl-nl-dmN" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKl-nl-dmN" id="D3m-OP-1WK">
@@ -28,7 +28,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-cr-VsB" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-cr-VsB" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
                                             <rect key="frame" x="495" y="6" width="64" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="Owv-Dg-mfn"/>
@@ -47,9 +47,50 @@
                                         <constraint firstItem="YAA-cr-VsB" firstAttribute="centerY" secondItem="D3m-OP-1WK" secondAttribute="centerY" id="zHl-OU-Dt5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="priceLabel" destination="YAA-cr-VsB" id="KIN-ui-Mif"/>
+                                    <outlet property="productLabel" destination="vXq-V3-stl" id="dv2-2s-HcE"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.mosheberman.cell.patroncount" id="sCq-dw-oqp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.loading" id="S1Y-eE-GX1" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S1Y-eE-GX1" id="rhP-uW-Y2J">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-PW-m8i" userLabel="Product Label">
+                                            <rect key="frame" x="15" y="12" width="503" height="20"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laC-dC-94V" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                            <rect key="frame" x="528" y="6" width="64" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="UVi-d1-f2E"/>
+                                                <constraint firstAttribute="height" constant="32" id="Ydr-E2-Gq7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="P7G-PW-m8i" firstAttribute="leading" secondItem="rhP-uW-Y2J" secondAttribute="leadingMargin" constant="7" id="B5F-uw-RBe"/>
+                                        <constraint firstItem="P7G-PW-m8i" firstAttribute="centerY" secondItem="rhP-uW-Y2J" secondAttribute="centerY" id="I92-3N-DBA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="laC-dC-94V" secondAttribute="trailing" id="LVT-Io-QzH"/>
+                                        <constraint firstItem="laC-dC-94V" firstAttribute="centerY" secondItem="rhP-uW-Y2J" secondAttribute="centerY" id="NI7-r6-SBf"/>
+                                        <constraint firstItem="laC-dC-94V" firstAttribute="leading" secondItem="P7G-PW-m8i" secondAttribute="trailing" constant="10" id="cyD-FO-b5N"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="priceLabel" destination="laC-dC-94V" id="6er-FF-RhI"/>
+                                    <outlet property="productLabel" destination="P7G-PW-m8i" id="hxN-2Y-aPH"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="sCq-dw-oqp" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="138" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sCq-dw-oqp" id="svL-cg-qOp">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -67,9 +108,12 @@
                                         <constraint firstItem="fgu-Tt-Y3L" firstAttribute="centerY" secondItem="svL-cg-qOp" secondAttribute="centerY" id="NEB-3o-MUD"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="primaryLabel" destination="fgu-Tt-Y3L" id="yML-ER-GcX"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.mosheberman.cell.plain" id="cju-jC-vpD">
-                                <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.plain" id="cju-jC-vpD" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="182" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cju-jC-vpD" id="ypm-kN-pk4">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -87,6 +131,9 @@
                                         <constraint firstItem="JZj-be-ZDp" firstAttribute="centerY" secondItem="ypm-kN-pk4" secondAttribute="centerY" id="sDq-UF-Wec"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="primaryLabel" destination="JZj-be-ZDp" id="7LW-71-xDL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
