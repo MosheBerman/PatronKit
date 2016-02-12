@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class PlainTextTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var primaryLabel: UILabel!
+    var primaryLabel: UILabel = UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
