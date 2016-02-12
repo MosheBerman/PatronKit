@@ -11,7 +11,7 @@ import UIKit
 class PatronageOptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceLabel: RoundedLabel!
 
     
     override func awakeFromNib() {
