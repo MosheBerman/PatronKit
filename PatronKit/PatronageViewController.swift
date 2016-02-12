@@ -16,6 +16,7 @@ public class PatronageViewController: UITableViewController {
     var calendar : NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.commonInit()
     }
@@ -34,11 +35,13 @@ public class PatronageViewController: UITableViewController {
     
     func commonInit() {
         
-        self.tableView.registerClass(PatronageCellSubtitleKind.self, forCellReuseIdentifier: "com.mosheberman.patronage.cell.default")
-        
         numberFormatter.numberStyle = .CurrencyStyle
         dateFormatter.timeStyle = .NoStyle
         dateFormatter.dateStyle = .MediumStyle
+        
+        self.tableView.registerClass(PlainTextTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.plain")
+        self.tableView.registerClass(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.loading")
+        self.tableView.registerClass(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.product")
         
         let oneMonth = self.oneUnitBefore(NSDate(), withUnit: NSCalendarUnit.Month)
         
@@ -65,7 +68,7 @@ public class PatronageViewController: UITableViewController {
     
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("com.mosheberman.patronage.cell.default", forIndexPath: indexPath)
+        var cell : UITableViewCell
         
         if indexPath.section == 0 {
             
@@ -73,8 +76,16 @@ public class PatronageViewController: UITableViewController {
             
             if count == 0 /* there are no products  */
             {
-                cell.textLabel?.text = NSLocalizedString("Loading Patronage Options...", comment: "A title for a cell that is loading patronage information.")
-                cell.detailTextLabel?.text = nil
+                let loadingCell : PatronageOptionTableViewCell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.loading", forIndexPath: indexPath) as! PatronageOptionTableViewCell
+                loadingCell.productLabel.text = NSLocalizedString("Loading Patronage Options...", comment: "A title for a cell that is loading patronage information.")
+                loadingCell.priceLabel.text = "..."
+                
+                loadingCell.accessoryType = .None
+                
+                loadingCell.productLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                loadingCell.priceLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+                
+                cell = loadingCell
             }
             else {
                 
@@ -87,14 +98,31 @@ public class PatronageViewController: UITableViewController {
                     price = productPrice
                 }
                 
-                cell.textLabel?.text = title
-                cell.detailTextLabel?.text = price
-                cell.accessoryType = .DisclosureIndicator
+                let productCell : PatronageOptionTableViewCell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.product", forIndexPath: indexPath) as! PatronageOptionTableViewCell
+                productCell.productLabel.text = title
+                productCell.priceLabel.text = price
+                
+                productCell.accessoryType = .DisclosureIndicator
+                
+                productCell.productLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                productCell.priceLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+                
+                cell = productCell
             }
         }
         else if indexPath.section == 1 {
-            cell.textLabel?.text = NSLocalizedString("Restore Purchases", comment: "A label a button that restores previous purchases.")
-            cell.detailTextLabel?.text = nil
+            let restoreCell : PlainTextTableViewCell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.plain", forIndexPath: indexPath) as! PlainTextTableViewCell
+            restoreCell.primaryLabel.text = NSLocalizedString("Restore Purchases", comment: "A label a button that restores previous purchases.")
+            
+            restoreCell.accessoryType = .DisclosureIndicator
+            
+            restoreCell.primaryLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+            
+            cell = restoreCell
+        }
+        else {
+            cell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.plain", forIndexPath: indexPath)
+            cell.accessoryType = .None
         }
         
         return cell
