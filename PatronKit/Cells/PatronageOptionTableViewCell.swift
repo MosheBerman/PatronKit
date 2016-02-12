@@ -24,9 +24,6 @@ import UIKit
         // Configure the view for the selected state
     }
 
-    override func updateConstraints() {
-        
-    }
     override func layoutSubviews() {
         super.layoutSubviews()
         
