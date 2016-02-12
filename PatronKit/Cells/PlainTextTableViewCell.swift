@@ -38,7 +38,9 @@ class PlainTextTableViewCell: UITableViewCell {
         let views = ["primaryLabel" : self.primaryLabel]
         
         let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-7-[primaryLabel]", options: [NSLayoutFormatOptions.AlignAllCenterY], metrics: nil, views: views)
-        self.contentView.addConstraints(x)
+        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:|[primaryLabel]|", options: [], metrics: nil, views: views)
+        
+        self.contentView.addConstraints(x+y)
     }
 
 }

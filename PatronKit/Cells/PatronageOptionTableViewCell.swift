@@ -51,7 +51,7 @@ class PatronageOptionTableViewCell: UITableViewCell {
         
         let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[productLabel]-20-[priceLabel(64@1000)]-|", options: [.AlignAllCenterY], metrics: nil, views: views)
         
-        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:[productLabel(32)]", options: [], metrics: nil, views: views)
+        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:|[productLabel(32)]|", options: [], metrics: nil, views: views)
         
         let constraints = x + y
         
