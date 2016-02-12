@@ -14,9 +14,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This table view is not used at runtime. It's a sandbox for designing cells." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wT2-uh-Ty5">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" red="0.69857374294414742" green="0.69857374294414742" blue="0.69857374294414742" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="bKl-nl-dmN" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKl-nl-dmN" id="D3m-OP-1WK">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -53,7 +60,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.loading" id="S1Y-eE-GX1" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="138" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S1Y-eE-GX1" id="rhP-uW-Y2J">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -90,7 +97,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="sCq-dw-oqp" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="182" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sCq-dw-oqp" id="svL-cg-qOp">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -113,7 +120,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.plain" id="cju-jC-vpD" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="182" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="226" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cju-jC-vpD" id="ypm-kN-pk4">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
