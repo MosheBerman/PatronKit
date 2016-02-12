@@ -19,7 +19,15 @@ class PlainTextTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         if (self.contentView.subviews.contains(self.primaryLabel))
         {
             self.contentView.removeConstraints(self.primaryLabel.constraints)

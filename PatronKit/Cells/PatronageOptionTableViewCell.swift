@@ -27,6 +27,11 @@ class PatronageOptionTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.productLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         if(self.contentView.subviews.contains(self.productLabel))
         {
             self.contentView.removeConstraints(self.productLabel.constraints)
