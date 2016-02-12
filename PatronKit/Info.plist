@@ -19,7 +19,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>211</string>
+=======
+	<string>132</string>
+>>>>>>> parent of 60ed714... Fixed ObjC visibility.
 	<key>NSPrincipalClass</key>
 	<string></string>
 </dict>
