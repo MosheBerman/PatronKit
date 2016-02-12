@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class PlainTextTableViewCell: UITableViewCell {
+class PlainTextTableViewCell: UITableViewCell {
 
     var primaryLabel: UILabel = UILabel()
     

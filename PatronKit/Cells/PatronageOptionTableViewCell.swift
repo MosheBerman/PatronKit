@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class PatronageOptionTableViewCell: UITableViewCell {
+class PatronageOptionTableViewCell: UITableViewCell {
 
     var productLabel: UILabel = UILabel()
     var priceLabel : RoundedLabel = RoundedLabel()
