@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		463CFFEC1C6CB71300F46DAA /* PatronageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463CFFEB1C6CB71300F46DAA /* PatronageViewController.storyboard */; };
 		463CFFEE1C6CB8B400F46DAA /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463CFFED1C6CB8B400F46DAA /* RoundedLabel.swift */; };
-		464D9CE41C5514D400DD0485 /* PatronageCellSubtitleKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D9CE31C5514D400DD0485 /* PatronageCellSubtitleKind.swift */; };
 		4653815F1C6D7F5D0052C282 /* PatronageOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4653815E1C6D7F5D0052C282 /* PatronageOptionTableViewCell.swift */; };
 		465381621C6D7F790052C282 /* PlainTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465381611C6D7F790052C282 /* PlainTextTableViewCell.swift */; };
 		466DD1E21C4DF81C0007A5EA /* PatronKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 466DD1E11C4DF81C0007A5EA /* PatronKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,7 +32,6 @@
 /* Begin PBXFileReference section */
 		463CFFEB1C6CB71300F46DAA /* PatronageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PatronageViewController.storyboard; sourceTree = "<group>"; };
 		463CFFED1C6CB8B400F46DAA /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedLabel.swift; path = "Custom Controls/RoundedLabel.swift"; sourceTree = "<group>"; };
-		464D9CE31C5514D400DD0485 /* PatronageCellSubtitleKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatronageCellSubtitleKind.swift; sourceTree = "<group>"; };
 		4653815E1C6D7F5D0052C282 /* PatronageOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatronageOptionTableViewCell.swift; path = Cells/PatronageOptionTableViewCell.swift; sourceTree = "<group>"; };
 		465381611C6D7F790052C282 /* PlainTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlainTextTableViewCell.swift; path = Cells/PlainTextTableViewCell.swift; sourceTree = "<group>"; };
 		466DD1DE1C4DF81C0007A5EA /* PatronKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PatronKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 			children = (
 				466DD1E11C4DF81C0007A5EA /* PatronKit.h */,
 				466DD1F91C4E91370007A5EA /* PatronManager.swift */,
-				464D9CE31C5514D400DD0485 /* PatronageCellSubtitleKind.swift */,
 				46D712F31C507B02001D5AAF /* PatronageViewController.swift */,
 				46D712F01C4F278E001D5AAF /* PatronKitBlockTypes.swift */,
 				463CFFEB1C6CB71300F46DAA /* PatronageViewController.storyboard */,
@@ -248,7 +245,6 @@
 				46D712F11C4F278E001D5AAF /* PatronKitBlockTypes.swift in Sources */,
 				463CFFEE1C6CB8B400F46DAA /* RoundedLabel.swift in Sources */,
 				4653815F1C6D7F5D0052C282 /* PatronageOptionTableViewCell.swift in Sources */,
-				464D9CE41C5514D400DD0485 /* PatronageCellSubtitleKind.swift in Sources */,
 				466DD1FA1C4E91370007A5EA /* PatronManager.swift in Sources */,
 				46D712F41C507B02001D5AAF /* PatronageViewController.swift in Sources */,
 				465381621C6D7F790052C282 /* PlainTextTableViewCell.swift in Sources */,
