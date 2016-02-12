@@ -20,7 +20,17 @@ class PlainTextTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if (self.contentView.subviews.contains(self.primaryLabel))
+        {
+            self.contentView.removeConstraints(self.primaryLabel.constraints)
+        }
+        
+        self.contentView.addSubview(self.primaryLabel)
+        
+        let views = ["primaryLabel" : self.primaryLabel]
+        
+        let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-7-[primaryLabel]", options: [NSLayoutFormatOptions.AlignAllCenterY], metrics: nil, views: views)
+        self.contentView.addConstraints(x)
     }
 
 }
