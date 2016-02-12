@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlainTextTableViewCell: UITableViewCell {
+@IBDesignable class PlainTextTableViewCell: UITableViewCell {
 
     @IBOutlet weak var primaryLabel: UILabel!
     
