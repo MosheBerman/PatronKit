@@ -43,6 +43,9 @@ public class PatronageViewController: UITableViewController {
         self.tableView.registerClass(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.loading")
         self.tableView.registerClass(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.product")
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
+        
         let oneMonth = self.oneUnitBefore(NSDate(), withUnit: NSCalendarUnit.Month)
         
         PatronManager.sharedManager.fetchPatronageExpiration { (date : NSDate?) -> Void in
