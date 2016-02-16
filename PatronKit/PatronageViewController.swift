@@ -56,13 +56,13 @@ public class PatronageViewController: UITableViewController {
         
         PatronManager.sharedManager.fetchPatronCountSince(date: oneMonth) { (count, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             })
         }
         
         PatronManager.sharedManager.fetchAvailablePatronageProducts { (products, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             })
         }
     }
@@ -94,7 +94,12 @@ public class PatronageViewController: UITableViewController {
                 
                 let product : SKProduct = PatronManager.sharedManager.products[indexPath.row]
                 
-                let title : String = product.localizedTitle
+                var title : String = product.localizedTitle
+                
+                if title.characters.count == 0 {
+                    title = NSLocalizedString("Product Name Unavailable", comment: "")
+                }
+                
                 var price : String? = NSLocalizedString("---", comment: "A label for when the price isn't available.")
                 
                 if let productPrice = self.numberFormatter.stringFromNumber(product.price) {
@@ -140,9 +145,6 @@ public class PatronageViewController: UITableViewController {
         var count : Int = 0
         
         if section == 0 {
-            count = 1
-        }
-        else if section == 1 {
             
             count = PatronManager.sharedManager.products.count
             
@@ -152,7 +154,7 @@ public class PatronageViewController: UITableViewController {
             }
             
         }
-        else if section == 2 {
+        else if section == 1 {
             count = 1
         }
         
