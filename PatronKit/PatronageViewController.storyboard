@@ -29,12 +29,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXq-V3-stl" userLabel="Product Label">
-                                            <rect key="frame" x="15" y="12" width="470" height="20"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-cr-VsB" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
                                             <rect key="frame" x="495" y="6" width="64" height="32"/>
                                             <constraints>
@@ -45,12 +39,20 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXq-V3-stl" userLabel="Product Label">
+                                            <rect key="frame" x="15" y="4" width="470" height="35"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="vXq-V3-stl" firstAttribute="centerY" secondItem="D3m-OP-1WK" secondAttribute="centerY" id="N7s-ef-loZ"/>
                                         <constraint firstItem="YAA-cr-VsB" firstAttribute="leading" secondItem="vXq-V3-stl" secondAttribute="trailing" constant="10" id="ZRI-IP-JPT"/>
+                                        <constraint firstAttribute="bottom" secondItem="vXq-V3-stl" secondAttribute="bottom" constant="4" id="ns9-6g-Mts"/>
                                         <constraint firstItem="vXq-V3-stl" firstAttribute="leading" secondItem="D3m-OP-1WK" secondAttribute="leadingMargin" constant="7" id="uoz-yl-U86"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="YAA-cr-VsB" secondAttribute="trailing" id="x3L-MX-cUF"/>
+                                        <constraint firstItem="vXq-V3-stl" firstAttribute="top" secondItem="D3m-OP-1WK" secondAttribute="top" constant="4" id="yGH-MV-58F"/>
                                         <constraint firstItem="YAA-cr-VsB" firstAttribute="centerY" secondItem="D3m-OP-1WK" secondAttribute="centerY" id="zHl-OU-Dt5"/>
                                     </constraints>
                                 </tableViewCellContentView>
