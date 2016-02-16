@@ -36,9 +36,12 @@ class PlainTextTableViewCell: UITableViewCell {
         let views = ["primaryLabel" : self.primaryLabel]
         
         let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[primaryLabel]-|", options: [], metrics: nil, views: views)
-        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:|[primaryLabel(35@1000)]|", options: [], metrics: nil, views: views)
+        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:[primaryLabel(35@1000)]", options: [], metrics: nil, views: views)
+        let center : NSLayoutConstraint = NSLayoutConstraint(item: primaryLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1, constant: 0)
         
-        self.contentView.addConstraints(x+y)
+        let constraints = x + y + [center]
+        
+        self.contentView.addConstraints(constraints)
     }
 
 }
