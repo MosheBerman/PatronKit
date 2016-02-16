@@ -9,26 +9,24 @@
 import UIKit
 
 class PatronageOptionTableViewCell: UITableViewCell {
-
+    
     var productLabel: UILabel = UILabel()
     var priceLabel : RoundedLabel = RoundedLabel()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.productLabel.translatesAutoresizingMaskIntoConstraints = false
         self.priceLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -47,13 +45,24 @@ class PatronageOptionTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.productLabel)
         self.contentView.addSubview(self.priceLabel)
         
-        let views = ["productLabel" : productLabel, "priceLabel" : priceLabel]
+        // Horizontal Axis
+        let productLabelLeading : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .Leading, relatedBy: .Equal, toItem: self.contentView, attribute: .Leading, multiplier: 1, constant: 15.0)
+        let productLabelPriceLabelSpacing : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .Trailing, relatedBy: .Equal, toItem: priceLabel, attribute: .Leading, multiplier: 1.0, constant: 10.0)
+        productLabelPriceLabelSpacing.priority = 750
         
-        let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[productLabel]-20-[priceLabel(64@1000)]-|", options: [.AlignAllCenterY], metrics: nil, views: views)
+        let priceLabelWidth : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 64)
+        priceLabelWidth.priority = UILayoutPriorityRequired
         
-        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:|[productLabel(32)]|", options: [], metrics: nil, views: views)
+        let priceLabelTrailing : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Trailing, relatedBy: .Equal, toItem: self.contentView, attribute: .TrailingMargin, multiplier: 1.0, constant: 0)
         
-        let constraints = x + y
+        // Vertical Axis
+        let productLabelHeight : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 35.0)
+        let priceLabelHeight : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 32.0)
+        
+        let productLabelCenterOnPriceLabel : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .CenterY, relatedBy: .Equal, toItem: productLabel, attribute: .CenterY, multiplier: 1.0, constant:0.0)
+        let productLabelCenterY : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+        
+        let constraints = [productLabelLeading, productLabelPriceLabelSpacing, priceLabelWidth, priceLabelTrailing, productLabelHeight, priceLabelHeight, productLabelCenterOnPriceLabel, productLabelCenterY]
         
         self.contentView.addConstraints(constraints)
     }

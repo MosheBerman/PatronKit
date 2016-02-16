@@ -24,8 +24,6 @@ class PlainTextTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         if (self.contentView.subviews.contains(self.primaryLabel))
@@ -37,8 +35,8 @@ class PlainTextTableViewCell: UITableViewCell {
         
         let views = ["primaryLabel" : self.primaryLabel]
         
-        let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-7-[primaryLabel]", options: [NSLayoutFormatOptions.AlignAllCenterY], metrics: nil, views: views)
-        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:|[primaryLabel]|", options: [], metrics: nil, views: views)
+        let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[primaryLabel]-|", options: [], metrics: nil, views: views)
+        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:|[primaryLabel(35@1000)]|", options: [], metrics: nil, views: views)
         
         self.contentView.addConstraints(x+y)
     }
