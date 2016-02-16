@@ -19,6 +19,10 @@ import UIKit
     */
     
     override func willMoveToSuperview(newSuperview: UIView?) {
+        if let tint = UIView.appearance().tintColor {
+            self.tintColor = tint
+        }
+        
         self.backgroundColor = self.tintColor.colorWithAlphaComponent(0.2)
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
