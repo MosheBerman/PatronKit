@@ -9,6 +9,15 @@
 import UIKit
 import StoreKit
 
+enum PatronageTableSection : NSInteger {
+ 
+    case Purchase = 0
+    case PurchaseStatistics = 1
+    case Review = 2
+    case RestorePurchases = 3
+    
+}
+
 public class PatronageViewController: UITableViewController {
     
     var numberFormatter : NSNumberFormatter = NSNumberFormatter()
@@ -110,7 +119,7 @@ public class PatronageViewController: UITableViewController {
                 productCell.productLabel.text = title
                 productCell.priceLabel.text = price
                 
-                productCell.accessoryType = .DisclosureIndicator
+                productCell.accessoryType = .None
                 
                 productCell.productLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                 productCell.priceLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
@@ -165,7 +174,7 @@ public class PatronageViewController: UITableViewController {
         
         var title : String? = nil
         
-        if section == 0 {
+        if section == PatronageTableSection.Purchase.rawValue {
             // Become/Extend
             if let _ = PatronManager.sharedManager.expirationDate {
                 title = NSLocalizedString("Extend Your Patronage", comment: "A title for the patronage list encouraging returning patrons to donate again.")
@@ -175,8 +184,8 @@ public class PatronageViewController: UITableViewController {
                 title = NSLocalizedString("Become a Patron", comment: "A title for the patronage list encouraging first time patrons to donate.")
             }
         }
-        else if section == 1 {
-             title = nil
+        else if section == PatronageTableSection.Review.rawValue {
+            title = NSLocalizedString("App Store Reviews", comment: "A title for the App Store review section.")
         }
         
         return title
@@ -186,26 +195,13 @@ public class PatronageViewController: UITableViewController {
         
         var title : String? = nil
         
-        if section == 0 {
+        if section == PatronageTableSection.Purchase.rawValue {
             // Number of patrons
-            
-            let count = PatronManager.sharedManager.patronCount
-            if count > 1 {
-                
-                title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many people donated recently."), count) as String
-            }
-            else if count > 0 {
-                title = NSString(format: NSLocalizedString("%li person became a patron recently.", comment: "A string counting how many people donated recently."), count) as String
-            }
-            else {
-                title = NSLocalizedString("Be the first to become a patron!", comment: "A comment encouraging users to become patrons.")
-            }
-        }
-        else if section == 1 {
-            // Restore/auto-renew disclaimer
-            title = NSLocalizedString("Purchases credit the account in use at the time of purchase and can't be transferred.\n\nThese one-time purchases do not auto-renew.", comment: "An explanation of how the purchases work.")
+            title = NSLocalizedString("These purchases do not auto-renew.", comment: "A message informing users that IAPs do not automatically renew.")
         }
         
+        
+
         return title
     }
     
