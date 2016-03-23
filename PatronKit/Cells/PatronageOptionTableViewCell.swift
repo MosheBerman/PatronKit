@@ -50,14 +50,14 @@ class PatronageOptionTableViewCell: UITableViewCell {
         let productLabelPriceLabelSpacing : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .Trailing, relatedBy: .Equal, toItem: priceLabel, attribute: .Leading, multiplier: 1.0, constant: 10.0)
         productLabelPriceLabelSpacing.priority = 750
         
-        let priceLabelWidth : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 64)
+        let priceLabelWidth : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 60)
         priceLabelWidth.priority = UILayoutPriorityRequired
         
-        let priceLabelTrailing : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Trailing, relatedBy: .Equal, toItem: self.contentView, attribute: .TrailingMargin, multiplier: 1.0, constant: 0)
+        let priceLabelTrailing : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Trailing, relatedBy: .Equal, toItem: self.contentView, attribute: .TrailingMargin, multiplier: 1.0, constant: 10)
         
         // Vertical Axis
         let productLabelHeight : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 35.0)
-        let priceLabelHeight : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 32.0)
+        let priceLabelHeight : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 25.0)
         
         let productLabelCenterOnPriceLabel : NSLayoutConstraint = NSLayoutConstraint(item: priceLabel, attribute: .CenterY, relatedBy: .Equal, toItem: productLabel, attribute: .CenterY, multiplier: 1.0, constant:0.0)
         let productLabelCenterY : NSLayoutConstraint = NSLayoutConstraint(item: productLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
