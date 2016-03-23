@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -30,17 +30,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAA-cr-VsB" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
-                                            <rect key="frame" x="495" y="6" width="64" height="32"/>
+                                            <rect key="frame" x="499" y="9" width="60" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="Owv-Dg-mfn"/>
-                                                <constraint firstAttribute="width" constant="64" id="xrN-ba-VKm"/>
+                                                <constraint firstAttribute="height" constant="25" id="Owv-Dg-mfn"/>
+                                                <constraint firstAttribute="width" constant="60" id="xrN-ba-VKm"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXq-V3-stl" userLabel="Product Label">
-                                            <rect key="frame" x="15" y="4" width="470" height="35"/>
+                                            <rect key="frame" x="15" y="4" width="474" height="35"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -69,16 +69,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7G-PW-m8i" userLabel="Product Label">
-                                            <rect key="frame" x="15" y="12" width="503" height="20"/>
+                                            <rect key="frame" x="15" y="12" width="507" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laC-dC-94V" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
-                                            <rect key="frame" x="528" y="6" width="64" height="32"/>
+                                            <rect key="frame" x="532" y="9" width="60" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="UVi-d1-f2E"/>
-                                                <constraint firstAttribute="height" constant="32" id="Ydr-E2-Gq7"/>
+                                                <constraint firstAttribute="width" constant="60" id="UVi-d1-f2E"/>
+                                                <constraint firstAttribute="height" constant="25" id="Ydr-E2-Gq7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,8 +129,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZj-be-ZDp">
-                                            <rect key="frame" x="15" y="12" width="40" height="20"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <rect key="frame" x="15" y="13" width="36" height="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -153,19 +153,21 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJW-vO-a1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="288"/>
+            <point key="canvasLocation" x="472" y="254"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="6Up-M4-Q4X">
             <objects>
                 <tableViewController storyboardIdentifier="com.patronkit.patronageviewcontroller.mockup.sections" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zvb-n1-7sr" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="OmK-H0-8Qe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This table view is not used at runtime. It's a sandbox for designing user interface." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ewV-Hc-O2T">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ewV-Hc-O2T">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <string key="text">This table view is not used at runtime. 
+It's a sandbox for designing user interface.</string>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                             <color key="textColor" red="0.69857374289999996" green="0.69857374289999996" blue="0.69857374289999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -173,26 +175,26 @@
                         <sections>
                             <tableViewSection headerTitle="Become a Patron" footerTitle="These purchases do not auto-renew." id="RfF-Wn-7g6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="h7O-MK-ii7" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="h7O-MK-ii7" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h7O-MK-ii7" id="a7m-j3-phY">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C74-1B-Mae" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
-                                                    <rect key="frame" x="495" y="6" width="64" height="32"/>
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="64" id="C55-f7-nuh"/>
-                                                        <constraint firstAttribute="height" constant="32" id="JUF-ba-ugN"/>
+                                                        <constraint firstAttribute="width" constant="60" id="C55-f7-nuh"/>
+                                                        <constraint firstAttribute="height" constant="25" id="JUF-ba-ugN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhK-bu-TIZ" userLabel="Product Label">
-                                                    <rect key="frame" x="15" y="4" width="470" height="35"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -203,7 +205,7 @@
                                                 <constraint firstItem="C74-1B-Mae" firstAttribute="centerY" secondItem="a7m-j3-phY" secondAttribute="centerY" id="G6G-Wv-Q2t"/>
                                                 <constraint firstItem="uhK-bu-TIZ" firstAttribute="leading" secondItem="a7m-j3-phY" secondAttribute="leadingMargin" constant="7" id="doD-vo-1YS"/>
                                                 <constraint firstItem="uhK-bu-TIZ" firstAttribute="top" secondItem="a7m-j3-phY" secondAttribute="top" constant="4" id="ih2-Pv-EUb"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="C74-1B-Mae" secondAttribute="trailing" id="oJq-jZ-XfC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="C74-1B-Mae" secondAttribute="trailing" constant="10" id="oJq-jZ-XfC"/>
                                                 <constraint firstItem="uhK-bu-TIZ" firstAttribute="centerY" secondItem="a7m-j3-phY" secondAttribute="centerY" id="w8h-j1-iep"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -212,26 +214,26 @@
                                             <outlet property="productLabel" destination="uhK-bu-TIZ" id="vbs-l7-4BA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="fQM-QY-wBE" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="fQM-QY-wBE" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fQM-QY-wBE" id="IXq-Ic-c7E">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$2.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icq-fR-eqf" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
-                                                    <rect key="frame" x="495" y="6" width="64" height="32"/>
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="OCS-gX-Oq8"/>
-                                                        <constraint firstAttribute="width" constant="64" id="TD1-E0-6P9"/>
+                                                        <constraint firstAttribute="height" constant="25" id="OCS-gX-Oq8"/>
+                                                        <constraint firstAttribute="width" constant="60" id="TD1-E0-6P9"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="6-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKX-7t-EJg" userLabel="Product Label">
-                                                    <rect key="frame" x="15" y="4" width="470" height="35"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -243,7 +245,7 @@
                                                 <constraint firstItem="icq-fR-eqf" firstAttribute="centerY" secondItem="IXq-Ic-c7E" secondAttribute="centerY" id="VRF-M0-bid"/>
                                                 <constraint firstItem="HKX-7t-EJg" firstAttribute="centerY" secondItem="IXq-Ic-c7E" secondAttribute="centerY" id="ZYb-g5-cCh"/>
                                                 <constraint firstAttribute="bottom" secondItem="HKX-7t-EJg" secondAttribute="bottom" constant="4" id="a4s-MH-stF"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="icq-fR-eqf" secondAttribute="trailing" id="qSv-gt-Mnl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="icq-fR-eqf" secondAttribute="trailing" constant="10" id="qSv-gt-Mnl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -251,33 +253,33 @@
                                             <outlet property="productLabel" destination="HKX-7t-EJg" id="Jgj-xI-IGF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="Efa-RG-ahC" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="182" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="Efa-RG-ahC" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="182" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Efa-RG-ahC" id="ovI-av-CIm">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$11.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2t-ib-8ph" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
-                                                    <rect key="frame" x="495" y="6" width="64" height="32"/>
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="64" id="XDl-6e-Fpc"/>
-                                                        <constraint firstAttribute="height" constant="32" id="qhg-FX-jE7"/>
+                                                        <constraint firstAttribute="width" constant="60" id="XDl-6e-Fpc"/>
+                                                        <constraint firstAttribute="height" constant="25" id="qhg-FX-jE7"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="12-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpi-zN-fA8" userLabel="Product Label">
-                                                    <rect key="frame" x="15" y="4" width="470" height="35"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="I2t-ib-8ph" firstAttribute="centerY" secondItem="ovI-av-CIm" secondAttribute="centerY" id="2FJ-QO-DvC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="I2t-ib-8ph" secondAttribute="trailing" id="DLS-Mp-bVC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="I2t-ib-8ph" secondAttribute="trailing" constant="10" id="DLS-Mp-bVC"/>
                                                 <constraint firstAttribute="bottom" secondItem="gpi-zN-fA8" secondAttribute="bottom" constant="4" id="E82-uT-uUJ"/>
                                                 <constraint firstItem="I2t-ib-8ph" firstAttribute="leading" secondItem="gpi-zN-fA8" secondAttribute="trailing" constant="10" id="UKK-JD-4Xt"/>
                                                 <constraint firstItem="gpi-zN-fA8" firstAttribute="top" secondItem="ovI-av-CIm" secondAttribute="top" constant="4" id="WGR-WO-u4e"/>
@@ -292,68 +294,18 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="" footerTitle="" id="23x-na-nay">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="2v5-h8-HVT" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="271" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2v5-h8-HVT" id="MNn-zS-sUl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="287 people became patrons recently." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-m1-3LS">
-                                                    <rect key="frame" x="15" y="13" width="240" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nbc-m1-3LS" firstAttribute="leading" secondItem="MNn-zS-sUl" secondAttribute="leadingMargin" constant="7" id="KJ3-mQ-KdA"/>
-                                                <constraint firstItem="nbc-m1-3LS" firstAttribute="centerY" secondItem="MNn-zS-sUl" secondAttribute="centerY" id="WUD-6o-VAs"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="primaryLabel" destination="nbc-m1-3LS" id="fHY-W3-T2c"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="RLW-F4-vLW" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="315" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RLW-F4-vLW" id="yJb-RL-dUm">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your patronage ends on August 24, 2016." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaX-6z-QVy">
-                                                    <rect key="frame" x="15" y="13" width="268" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UaX-6z-QVy" firstAttribute="centerY" secondItem="yJb-RL-dUm" secondAttribute="centerY" id="QbU-HI-NOk"/>
-                                                <constraint firstItem="UaX-6z-QVy" firstAttribute="leading" secondItem="yJb-RL-dUm" secondAttribute="leadingMargin" constant="7" id="a6o-2G-lDH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="primaryLabel" destination="UaX-6z-QVy" id="WFJ-aA-qco"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="App Store Reviews" footerTitle="Thank you for your support!" id="aDr-6k-G5J">
+                            <tableViewSection headerTitle="Review &amp; Restore" footerTitle="410 people wrote reviews for this version." id="aDr-6k-G5J">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="2EU-uE-DQE" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="410" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="293" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2EU-uE-DQE" id="zqD-ZU-a7C">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a Review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6x-Wi-KWU">
-                                                    <rect key="frame" x="15" y="12" width="112" height="20"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <rect key="frame" x="15" y="12" width="107" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -367,41 +319,14 @@
                                             <outlet property="primaryLabel" destination="A6x-Wi-KWU" id="1dR-ia-XK7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="rUo-Lc-P7N" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="454" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.plain" id="hfB-Z7-v72" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="337" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUo-Lc-P7N" id="ul4-bS-zLh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hfB-Z7-v72" id="3Mw-EI-89b">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="410 people wrote nice App Store reviews." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbq-6D-doR">
-                                                    <rect key="frame" x="15" y="13" width="268" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Dbq-6D-doR" firstAttribute="leading" secondItem="ul4-bS-zLh" secondAttribute="leadingMargin" constant="7" id="3Lu-mp-72k"/>
-                                                <constraint firstItem="Dbq-6D-doR" firstAttribute="centerY" secondItem="ul4-bS-zLh" secondAttribute="centerY" id="bXk-oo-GfC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="primaryLabel" destination="Dbq-6D-doR" id="LY3-YD-YDT"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="v0B-J8-kHq">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.plain" id="BeX-Ea-r7q" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="543" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeX-Ea-r7q" id="umU-w7-SW2">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbQ-pA-l70">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93k-2W-Ezo">
                                                     <rect key="frame" x="15" y="12" width="136" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -409,12 +334,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="tbQ-pA-l70" firstAttribute="centerY" secondItem="umU-w7-SW2" secondAttribute="centerY" id="EMe-We-H57"/>
-                                                <constraint firstItem="tbQ-pA-l70" firstAttribute="leading" secondItem="umU-w7-SW2" secondAttribute="leadingMargin" constant="7" id="Zpm-QC-ceg"/>
+                                                <constraint firstItem="93k-2W-Ezo" firstAttribute="leading" secondItem="3Mw-EI-89b" secondAttribute="leadingMargin" constant="7" id="aze-jz-E3f"/>
+                                                <constraint firstItem="93k-2W-Ezo" firstAttribute="centerY" secondItem="3Mw-EI-89b" secondAttribute="centerY" id="xb8-qK-1rH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="primaryLabel" destination="tbQ-pA-l70" id="URt-gC-R7z"/>
+                                            <outlet property="primaryLabel" destination="93k-2W-Ezo" id="Juv-yd-03g"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -425,10 +350,627 @@
                             <outlet property="delegate" destination="zvb-n1-7sr" id="1zh-yO-hjq"/>
                         </connections>
                     </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Fh-zN-uuG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="288"/>
+            <point key="canvasLocation" x="1281.5" y="298.5"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="eoj-Yn-AIc">
+            <objects>
+                <tableViewController storyboardIdentifier="com.patronkit.patronageviewcontroller.mockup.sections-2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Re5-cv-pDj" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="F6b-m6-Jjo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vHF-FY-hqK">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <string key="text">This table view is not used at runtime. 
+It's a sandbox for designing user interface.</string>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" red="0.69857374289999996" green="0.69857374289999996" blue="0.69857374289999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <sections>
+                            <tableViewSection headerTitle="Become a Patron" footerTitle="These purchases do not auto-renew." id="xOJ-iu-kkn">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="JBw-Kb-7Kg" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JBw-Kb-7Kg" id="34A-HE-oKF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hld-wg-7FP" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="0ck-nE-hcP"/>
+                                                        <constraint firstAttribute="width" constant="60" id="gez-3L-s2A"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edx-EK-lgo" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Edx-EK-lgo" firstAttribute="centerY" secondItem="34A-HE-oKF" secondAttribute="centerY" id="08Q-wA-bVF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Hld-wg-7FP" secondAttribute="trailing" constant="10" id="1hr-Le-d1M"/>
+                                                <constraint firstItem="Hld-wg-7FP" firstAttribute="centerY" secondItem="34A-HE-oKF" secondAttribute="centerY" id="W9s-zC-g74"/>
+                                                <constraint firstItem="Hld-wg-7FP" firstAttribute="leading" secondItem="Edx-EK-lgo" secondAttribute="trailing" constant="10" id="bw2-vR-16G"/>
+                                                <constraint firstItem="Edx-EK-lgo" firstAttribute="leading" secondItem="34A-HE-oKF" secondAttribute="leadingMargin" constant="7" id="nrF-5U-RBD"/>
+                                                <constraint firstAttribute="bottom" secondItem="Edx-EK-lgo" secondAttribute="bottom" constant="4" id="pMp-iZ-WYd"/>
+                                                <constraint firstItem="Edx-EK-lgo" firstAttribute="top" secondItem="34A-HE-oKF" secondAttribute="top" constant="4" id="x2y-id-JIT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="Hld-wg-7FP" id="7P2-XW-Vdb"/>
+                                            <outlet property="productLabel" destination="Edx-EK-lgo" id="FNg-H9-S5X"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="4Ws-L9-UUT" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Ws-L9-UUT" id="ksQ-dy-Pfi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$2.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xz-Ac-BPL" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="Cbm-ab-rLS"/>
+                                                        <constraint firstAttribute="height" constant="25" id="x0W-i1-QtZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="6-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yON-k8-XH8" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yON-k8-XH8" firstAttribute="top" secondItem="ksQ-dy-Pfi" secondAttribute="top" constant="4" id="Eil-3N-5JS"/>
+                                                <constraint firstItem="3Xz-Ac-BPL" firstAttribute="leading" secondItem="yON-k8-XH8" secondAttribute="trailing" constant="10" id="JNd-Ie-a49"/>
+                                                <constraint firstItem="3Xz-Ac-BPL" firstAttribute="centerY" secondItem="ksQ-dy-Pfi" secondAttribute="centerY" id="Ptl-7F-hai"/>
+                                                <constraint firstItem="yON-k8-XH8" firstAttribute="centerY" secondItem="ksQ-dy-Pfi" secondAttribute="centerY" id="a5U-32-mHn"/>
+                                                <constraint firstAttribute="bottom" secondItem="yON-k8-XH8" secondAttribute="bottom" constant="4" id="c5N-on-7O9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3Xz-Ac-BPL" secondAttribute="trailing" constant="10" id="hPF-UO-MWg"/>
+                                                <constraint firstItem="yON-k8-XH8" firstAttribute="leading" secondItem="ksQ-dy-Pfi" secondAttribute="leadingMargin" constant="7" id="tBo-u2-4wt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="3Xz-Ac-BPL" id="SAB-p0-epI"/>
+                                            <outlet property="productLabel" destination="yON-k8-XH8" id="gEU-eJ-ImF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="xpR-UA-X37" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="182" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xpR-UA-X37" id="ExS-xy-Sso">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$11.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n7-c1-jdU" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="gmo-LZ-B9B"/>
+                                                        <constraint firstAttribute="height" constant="25" id="x4Y-ex-VxR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="12-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="li2-ml-Kvs" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7n7-c1-jdU" firstAttribute="leading" secondItem="li2-ml-Kvs" secondAttribute="trailing" constant="10" id="Ag4-Ib-H3w"/>
+                                                <constraint firstItem="li2-ml-Kvs" firstAttribute="centerY" secondItem="ExS-xy-Sso" secondAttribute="centerY" id="IK3-vf-n4r"/>
+                                                <constraint firstItem="li2-ml-Kvs" firstAttribute="top" secondItem="ExS-xy-Sso" secondAttribute="top" constant="4" id="Zok-HE-3Su"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7n7-c1-jdU" secondAttribute="trailing" constant="10" id="gRC-AT-SZr"/>
+                                                <constraint firstAttribute="bottom" secondItem="li2-ml-Kvs" secondAttribute="bottom" constant="4" id="ur0-pR-uOV"/>
+                                                <constraint firstItem="7n7-c1-jdU" firstAttribute="centerY" secondItem="ExS-xy-Sso" secondAttribute="centerY" id="uu9-iD-veF"/>
+                                                <constraint firstItem="li2-ml-Kvs" firstAttribute="leading" secondItem="ExS-xy-Sso" secondAttribute="leadingMargin" constant="7" id="zJk-3V-zIb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="7n7-c1-jdU" id="NZR-op-mPx"/>
+                                            <outlet property="productLabel" destination="li2-ml-Kvs" id="1pb-0w-5f9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Write a Review" footerTitle="410 people wrote reviews for this version." id="6Gp-yw-oS7">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="Rjz-pN-mXj" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="293" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rjz-pN-mXj" id="nd5-1g-nX6">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review This Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE8-Rq-UTS">
+                                                    <rect key="frame" x="15" y="12" width="145" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kE8-Rq-UTS" firstAttribute="leading" secondItem="nd5-1g-nX6" secondAttribute="leadingMargin" constant="7" id="n6D-HB-vLQ"/>
+                                                <constraint firstItem="kE8-Rq-UTS" firstAttribute="centerY" secondItem="nd5-1g-nX6" secondAttribute="centerY" id="rF5-vJ-jsm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="primaryLabel" destination="kE8-Rq-UTS" id="ig4-ep-mqK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" footerTitle="" id="EC9-o8-3IB">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.plain" id="caA-7A-yfd" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="382" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="caA-7A-yfd" id="jJL-PK-dlS">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore Purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lns-0D-1KC">
+                                                    <rect key="frame" x="15" y="12" width="136" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Lns-0D-1KC" firstAttribute="leading" secondItem="jJL-PK-dlS" secondAttribute="leadingMargin" constant="7" id="6GD-s8-Auf"/>
+                                                <constraint firstItem="Lns-0D-1KC" firstAttribute="centerY" secondItem="jJL-PK-dlS" secondAttribute="centerY" id="mVw-Wx-2J1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="primaryLabel" destination="Lns-0D-1KC" id="egq-bV-rwU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Re5-cv-pDj" id="Oww-1f-nLF"/>
+                            <outlet property="delegate" destination="Re5-cv-pDj" id="37L-5b-wqL"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="53O-Uq-Vii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1688.5" y="298.5"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="LKP-lP-Wvh">
+            <objects>
+                <tableViewController storyboardIdentifier="com.patronkit.patronageviewcontroller.mockup.sections-3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vb6-Ne-IW0" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="YcS-aZ-aOR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HpA-12-YG8">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <string key="text">This table view is not used at runtime. 
+It's a sandbox for designing user interface.</string>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" red="0.69857374289999996" green="0.69857374289999996" blue="0.69857374289999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <sections>
+                            <tableViewSection headerTitle="Your Patronage Expires on August 24, 2016" footerTitle="287 people became patrons this month." id="dBp-oM-tfK">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="bXX-be-LpE" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bXX-be-LpE" id="FVq-HQ-X1h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dD-wn-UXr" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Nq1-Rv-Hzz"/>
+                                                        <constraint firstAttribute="width" constant="60" id="iVL-WB-aem"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-7G-r7h" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0dD-wn-UXr" firstAttribute="centerY" secondItem="FVq-HQ-X1h" secondAttribute="centerY" id="0yr-Df-Uk0"/>
+                                                <constraint firstItem="Aqo-7G-r7h" firstAttribute="centerY" secondItem="FVq-HQ-X1h" secondAttribute="centerY" id="O3X-QE-d3Z"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0dD-wn-UXr" secondAttribute="trailing" constant="10" id="a1o-Gl-qfp"/>
+                                                <constraint firstItem="Aqo-7G-r7h" firstAttribute="top" secondItem="FVq-HQ-X1h" secondAttribute="top" constant="4" id="efZ-rM-5l1"/>
+                                                <constraint firstAttribute="bottom" secondItem="Aqo-7G-r7h" secondAttribute="bottom" constant="4" id="h8I-XF-tHM"/>
+                                                <constraint firstItem="Aqo-7G-r7h" firstAttribute="leading" secondItem="FVq-HQ-X1h" secondAttribute="leadingMargin" constant="7" id="xWy-Vl-Zvl"/>
+                                                <constraint firstItem="0dD-wn-UXr" firstAttribute="leading" secondItem="Aqo-7G-r7h" secondAttribute="trailing" constant="10" id="xdR-wn-ILQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="0dD-wn-UXr" id="zRB-ji-unW"/>
+                                            <outlet property="productLabel" destination="Aqo-7G-r7h" id="eEy-1k-F6G"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="CwV-0h-vvu" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CwV-0h-vvu" id="xEb-rj-K7t">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$2.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJn-r1-nmZ" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Da6-Pa-nMS"/>
+                                                        <constraint firstAttribute="width" constant="60" id="Q3A-MB-EoR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="6-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE6-sX-YbB" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="yE6-sX-YbB" secondAttribute="bottom" constant="4" id="DJk-CL-S7J"/>
+                                                <constraint firstItem="yE6-sX-YbB" firstAttribute="top" secondItem="xEb-rj-K7t" secondAttribute="top" constant="4" id="J0d-PF-VBV"/>
+                                                <constraint firstItem="yE6-sX-YbB" firstAttribute="centerY" secondItem="xEb-rj-K7t" secondAttribute="centerY" id="Vdl-dI-pKi"/>
+                                                <constraint firstItem="yE6-sX-YbB" firstAttribute="leading" secondItem="xEb-rj-K7t" secondAttribute="leadingMargin" constant="7" id="bvB-HK-TCK"/>
+                                                <constraint firstItem="PJn-r1-nmZ" firstAttribute="centerY" secondItem="xEb-rj-K7t" secondAttribute="centerY" id="cvb-db-q2s"/>
+                                                <constraint firstItem="PJn-r1-nmZ" firstAttribute="leading" secondItem="yE6-sX-YbB" secondAttribute="trailing" constant="10" id="gB3-O3-owp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PJn-r1-nmZ" secondAttribute="trailing" constant="10" id="lty-P4-ULp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="PJn-r1-nmZ" id="7C3-8m-7r1"/>
+                                            <outlet property="productLabel" destination="yE6-sX-YbB" id="dB2-EL-0B0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="XlQ-Lo-MnO" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="182" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XlQ-Lo-MnO" id="LTn-lM-Ko6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$11.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0A-kw-moO" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="TU6-5q-w4E"/>
+                                                        <constraint firstAttribute="width" constant="60" id="Z8G-cr-lwb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="12-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reH-Mc-sxO" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="reH-Mc-sxO" firstAttribute="centerY" secondItem="LTn-lM-Ko6" secondAttribute="centerY" id="CB8-0B-xxe"/>
+                                                <constraint firstItem="J0A-kw-moO" firstAttribute="leading" secondItem="reH-Mc-sxO" secondAttribute="trailing" constant="10" id="Ceo-kM-b4X"/>
+                                                <constraint firstAttribute="bottom" secondItem="reH-Mc-sxO" secondAttribute="bottom" constant="4" id="PZ4-Zj-olF"/>
+                                                <constraint firstItem="reH-Mc-sxO" firstAttribute="top" secondItem="LTn-lM-Ko6" secondAttribute="top" constant="4" id="Wxm-Bw-d8E"/>
+                                                <constraint firstItem="J0A-kw-moO" firstAttribute="centerY" secondItem="LTn-lM-Ko6" secondAttribute="centerY" id="hOV-u8-7Oi"/>
+                                                <constraint firstItem="reH-Mc-sxO" firstAttribute="leading" secondItem="LTn-lM-Ko6" secondAttribute="leadingMargin" constant="7" id="plr-cF-A0J"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="J0A-kw-moO" secondAttribute="trailing" constant="10" id="rux-9h-eEK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="J0A-kw-moO" id="dru-nO-JWb"/>
+                                            <outlet property="productLabel" destination="reH-Mc-sxO" id="7gE-QL-IfL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="R0X-HJ-3pZ" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="226" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R0X-HJ-3pZ" id="kmt-Ih-0Re">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paT-dQ-2cS" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="EHd-TV-vhj"/>
+                                                        <constraint firstAttribute="height" constant="25" id="kGf-pO-G53"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Restore Purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVF-q1-yWW" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pVF-q1-yWW" firstAttribute="top" secondItem="kmt-Ih-0Re" secondAttribute="top" constant="4" id="Bbd-pM-9Sp"/>
+                                                <constraint firstAttribute="bottom" secondItem="pVF-q1-yWW" secondAttribute="bottom" constant="4" id="Eoh-wv-e8N"/>
+                                                <constraint firstItem="paT-dQ-2cS" firstAttribute="centerY" secondItem="kmt-Ih-0Re" secondAttribute="centerY" id="ZiR-ex-S9a"/>
+                                                <constraint firstItem="pVF-q1-yWW" firstAttribute="centerY" secondItem="kmt-Ih-0Re" secondAttribute="centerY" id="aPc-s8-ecH"/>
+                                                <constraint firstItem="paT-dQ-2cS" firstAttribute="leading" secondItem="pVF-q1-yWW" secondAttribute="trailing" constant="10" id="cH9-MI-QQb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="paT-dQ-2cS" secondAttribute="trailing" constant="10" id="kWc-LG-LUD"/>
+                                                <constraint firstItem="pVF-q1-yWW" firstAttribute="leading" secondItem="kmt-Ih-0Re" secondAttribute="leadingMargin" constant="7" id="s52-8n-vrL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="paT-dQ-2cS" id="4ZN-eQ-OBQ"/>
+                                            <outlet property="productLabel" destination="pVF-q1-yWW" id="RIV-xs-n1o"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Write a Review" footerTitle="410 people wrote reviews for this version." id="hJe-9W-cfD">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.patronkit.cell.patroncount" id="aSd-G1-wU2" customClass="PlainTextTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="337" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aSd-G1-wU2" id="hl8-F1-zIE">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review This Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJd-aa-dT6">
+                                                    <rect key="frame" x="15" y="12" width="145" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HJd-aa-dT6" firstAttribute="leading" secondItem="hl8-F1-zIE" secondAttribute="leadingMargin" constant="7" id="6Xb-mP-j5g"/>
+                                                <constraint firstItem="HJd-aa-dT6" firstAttribute="centerY" secondItem="hl8-F1-zIE" secondAttribute="centerY" id="TNV-PI-XtR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="primaryLabel" destination="HJd-aa-dT6" id="uYh-h3-dLu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="vb6-Ne-IW0" id="e49-rS-rvF"/>
+                            <outlet property="delegate" destination="vb6-Ne-IW0" id="T7M-WL-4ZM"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7N-So-PKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2104.5" y="298.5"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="AYX-GV-ubx">
+            <objects>
+                <tableViewController storyboardIdentifier="com.patronkit.patronageviewcontroller.mockup.sections-4" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ecG-Rm-EkE" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="l1v-aM-WxD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ebh-Cs-80I">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <string key="text">This table view is not used at runtime. 
+It's a sandbox for designing user interface.</string>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" red="0.69857374289999996" green="0.69857374289999996" blue="0.69857374289999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <sections>
+                            <tableViewSection headerTitle="Become a Patron" footerTitle="287 people became patrons this month." id="K5A-2R-Kob">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="2Ww-VZ-rUG" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Ww-VZ-rUG" id="0f0-0M-3jN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$0.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0t-0t-XFi" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="8BB-0g-4Gi"/>
+                                                        <constraint firstAttribute="height" constant="25" id="ehE-qv-zJ4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMc-Yo-5Zs" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="e0t-0t-XFi" secondAttribute="trailing" constant="10" id="dj6-hb-Ip9"/>
+                                                <constraint firstAttribute="bottom" secondItem="RMc-Yo-5Zs" secondAttribute="bottom" constant="4" id="l9k-Ot-KaJ"/>
+                                                <constraint firstItem="RMc-Yo-5Zs" firstAttribute="top" secondItem="0f0-0M-3jN" secondAttribute="top" constant="4" id="rSo-3O-fZ5"/>
+                                                <constraint firstItem="RMc-Yo-5Zs" firstAttribute="leading" secondItem="0f0-0M-3jN" secondAttribute="leadingMargin" constant="7" id="sZM-21-S7C"/>
+                                                <constraint firstItem="e0t-0t-XFi" firstAttribute="centerY" secondItem="0f0-0M-3jN" secondAttribute="centerY" id="trr-Fn-vp5"/>
+                                                <constraint firstItem="RMc-Yo-5Zs" firstAttribute="centerY" secondItem="0f0-0M-3jN" secondAttribute="centerY" id="wk9-zR-teV"/>
+                                                <constraint firstItem="e0t-0t-XFi" firstAttribute="leading" secondItem="RMc-Yo-5Zs" secondAttribute="trailing" constant="10" id="zE8-d5-nSR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="e0t-0t-XFi" id="o7E-zq-WC5"/>
+                                            <outlet property="productLabel" destination="RMc-Yo-5Zs" id="SNC-eY-ce1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="RER-fW-eZU" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RER-fW-eZU" id="aVv-wc-E45">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$2.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTZ-d7-hZE" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="cka-Ra-4jS"/>
+                                                        <constraint firstAttribute="height" constant="25" id="rOq-Jk-zce"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="6-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgv-Jt-YZ9" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bTZ-d7-hZE" secondAttribute="trailing" constant="10" id="B0x-EE-t9g"/>
+                                                <constraint firstItem="bTZ-d7-hZE" firstAttribute="centerY" secondItem="aVv-wc-E45" secondAttribute="centerY" id="B9p-i7-FvR"/>
+                                                <constraint firstItem="hgv-Jt-YZ9" firstAttribute="leading" secondItem="aVv-wc-E45" secondAttribute="leadingMargin" constant="7" id="QPr-GL-14H"/>
+                                                <constraint firstItem="bTZ-d7-hZE" firstAttribute="leading" secondItem="hgv-Jt-YZ9" secondAttribute="trailing" constant="10" id="Wfu-7m-8XA"/>
+                                                <constraint firstAttribute="bottom" secondItem="hgv-Jt-YZ9" secondAttribute="bottom" constant="4" id="Ws7-Gq-2rB"/>
+                                                <constraint firstItem="hgv-Jt-YZ9" firstAttribute="top" secondItem="aVv-wc-E45" secondAttribute="top" constant="4" id="cEv-0r-jnq"/>
+                                                <constraint firstItem="hgv-Jt-YZ9" firstAttribute="centerY" secondItem="aVv-wc-E45" secondAttribute="centerY" id="rS0-dO-Bg8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="bTZ-d7-hZE" id="TMP-r5-6Gd"/>
+                                            <outlet property="productLabel" destination="hgv-Jt-YZ9" id="g3N-oP-8jU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="EIn-BB-aSU" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="182" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIn-BB-aSU" id="wrU-OW-jao">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$11.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a07-U3-K9n" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="0C2-ef-l1l"/>
+                                                        <constraint firstAttribute="height" constant="25" id="FwX-Fg-Hh0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="12-Month Patronage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMA-hf-bdj" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="EMA-hf-bdj" secondAttribute="bottom" constant="4" id="30V-p3-mPW"/>
+                                                <constraint firstItem="EMA-hf-bdj" firstAttribute="top" secondItem="wrU-OW-jao" secondAttribute="top" constant="4" id="5Uq-dS-9V1"/>
+                                                <constraint firstItem="a07-U3-K9n" firstAttribute="centerY" secondItem="wrU-OW-jao" secondAttribute="centerY" id="70G-l1-apZ"/>
+                                                <constraint firstItem="EMA-hf-bdj" firstAttribute="leading" secondItem="wrU-OW-jao" secondAttribute="leadingMargin" constant="7" id="Hqm-aV-98H"/>
+                                                <constraint firstItem="EMA-hf-bdj" firstAttribute="centerY" secondItem="wrU-OW-jao" secondAttribute="centerY" id="j9P-Ao-OxB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a07-U3-K9n" secondAttribute="trailing" constant="10" id="jMk-IO-JWm"/>
+                                                <constraint firstItem="a07-U3-K9n" firstAttribute="leading" secondItem="EMA-hf-bdj" secondAttribute="trailing" constant="10" id="uZF-Z6-Wj7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="a07-U3-K9n" id="7gj-HM-iVY"/>
+                                            <outlet property="productLabel" destination="EMA-hf-bdj" id="9Ds-CR-SnJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" footerTitle="" id="u0m-FG-3NA">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.patronkit.cell.product" id="CMk-cM-7Kb" customClass="PatronageOptionTableViewCell" customModule="PatronKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="271" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMk-cM-7Kb" id="LCQ-Zb-d8I">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVA-tc-PKc" userLabel="Price Label" customClass="RoundedLabel" customModule="PatronKit" customModuleProvider="target">
+                                                    <rect key="frame" x="297" y="9" width="60" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="XgD-p6-xjc"/>
+                                                        <constraint firstAttribute="height" constant="25" id="iBF-sh-8h0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Restore Purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rn5-0g-uGe" userLabel="Product Label">
+                                                    <rect key="frame" x="15" y="4" width="272" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Rn5-0g-uGe" firstAttribute="leading" secondItem="LCQ-Zb-d8I" secondAttribute="leadingMargin" constant="7" id="96g-lb-SRp"/>
+                                                <constraint firstItem="Rn5-0g-uGe" firstAttribute="centerY" secondItem="LCQ-Zb-d8I" secondAttribute="centerY" id="E36-YA-3ur"/>
+                                                <constraint firstAttribute="bottom" secondItem="Rn5-0g-uGe" secondAttribute="bottom" constant="4" id="EpW-Q5-t09"/>
+                                                <constraint firstItem="Rn5-0g-uGe" firstAttribute="top" secondItem="LCQ-Zb-d8I" secondAttribute="top" constant="4" id="Ukl-IF-fmj"/>
+                                                <constraint firstItem="kVA-tc-PKc" firstAttribute="leading" secondItem="Rn5-0g-uGe" secondAttribute="trailing" constant="10" id="f9p-1w-qjv"/>
+                                                <constraint firstItem="kVA-tc-PKc" firstAttribute="centerY" secondItem="LCQ-Zb-d8I" secondAttribute="centerY" id="v5e-C1-TPl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kVA-tc-PKc" secondAttribute="trailing" constant="10" id="y8h-D6-djv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="kVA-tc-PKc" id="2nE-Ga-iIt"/>
+                                            <outlet property="productLabel" destination="Rn5-0g-uGe" id="5Dg-HN-lDE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="ecG-Rm-EkE" id="lpZ-cm-Rf4"/>
+                            <outlet property="delegate" destination="ecG-Rm-EkE" id="rve-3a-k5x"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAf-S7-clO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2532.5" y="298.5"/>
         </scene>
     </scenes>
 </document>
