@@ -23,9 +23,10 @@ import UIKit
             self.tintColor = tint
         }
         
-        self.backgroundColor = self.tintColor.colorWithAlphaComponent(0.2)
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = self.tintColor.CGColor
         self.textAlignment = .Center
         self.textColor = self.tintColor
     }
