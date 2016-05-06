@@ -37,13 +37,14 @@ PatronKit is a dynamic framework, so you should drag the Xcode project into your
 PatronKit is written in Swift, so an import is all you need to access it. You can use it in both Swift and Objective-C projects.
 
 *Swift:*
-
-    import PatronKit
+```swift
+import PatronKit
+```
     
 *Objective-C:*
-
-    @import PatronKit;
-
+```objc
+@import PatronKit;
+```
 
 *Note:* If you run into issues with XCTest, please double check that Xcode isn't compiling the PatronKit Swift files as part of your app target. 
 
@@ -64,16 +65,16 @@ You should create a few in-app purchase products with the "consumable" type. The
 You do this by passing the `PatronManager` an NSSet with your product identifiers, like so:
 
 *Swift:*
-
-    let identifiers: Set = Set(arrayLiteral: ["com.patronkit.3", "com.patronkit.6", "com.patronkit.12"])
-    PatronManager.sharedManager.productIdentifiers = identifiers
-
+```swift
+let identifiers: Set = Set(arrayLiteral: ["com.patronkit.3", "com.patronkit.6", "com.patronkit.12"])
+PatronManager.sharedManager.productIdentifiers = identifiers
+```
 
 *Objective-C:*
-
-    NSSet *identifiers = [NSSet setWithArray:@[@"com.patronkit.3", @"com.patronkit.6", @"com.patronkit.12"]];
-    [[PatronManager sharedManager] setProductIdentifiers:identifiers;
-
+```objc
+NSSet *identifiers = [NSSet setWithArray:@[@"com.patronkit.3", @"com.patronkit.6", @"com.patronkit.12"]];
+[[PatronManager sharedManager] setProductIdentifiers:identifiers;
+```
 At this point, you're all set up. PatronKit will sort the identifiers for you when it displays the products, from smallest number of months to largest. Now, we just need to show our users the patronage options.
 
 **Step 5:** Showing a Patronage View Controller
@@ -85,13 +86,13 @@ Getting App Review Counts:
 Optionally, you can get the number of reviews of your app on the App Store by passing your Apple app ID to PatronManager, by setting the appID property:
 
 *Swift:*
-
-    PatronManager.sharedManager.appID = "xxxxxx"
-    
+```swift
+PatronManager.sharedManager.appID = "xxxxxx"
+```    
 *Objective-C:*
-
-	 PatronManager.sharedManager.appID = @"xxxxxx"
-
+```objc
+PatronManager.sharedManager.appID = @"xxxxxx"
+```
 To Do:
 ---
 - [ ] Clever things to make the patron count look good
