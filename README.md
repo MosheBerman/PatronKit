@@ -92,14 +92,6 @@ Optionally, you can get the number of reviews of your app on the App Store by pa
 
 	 PatronManager.sharedManager.appID = @"xxxxxx"
 
-Features:
----
-
-- Offer patronage purchases to your users in a pre-built UI
-- Track when a users patronage expires
-- Encourage users to donate by showing them how many other users already donated
-- Encourage users to rate your app by showing them how many other reviews there are for the current app version. (You have to implement the UI for this by yourself, but fetching the number is built in to `PatronManager`)
-
 To Do:
 ---
 - [ ] Clever things to make the patron count look good
