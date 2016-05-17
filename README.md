@@ -115,3 +115,7 @@ License:
 
 MIT. Please feel free to let me know if you've used this in your app and how it works for you.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MosheBerman/patronkit/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
