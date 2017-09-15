@@ -18,7 +18,7 @@ class PatronageOptionTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -49,9 +49,9 @@ class PatronageOptionTableViewCell: UITableViewCell {
         
         let views = ["productLabel" : productLabel, "priceLabel" : priceLabel]
         
-        let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[productLabel]-20-[priceLabel(64@1000)]-|", options: [.AlignAllCenterY], metrics: nil, views: views)
+        let x = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[productLabel]-20-[priceLabel(64@1000)]-|", options: [.alignAllCenterY], metrics: nil, views: views)
         
-        let y = NSLayoutConstraint.constraintsWithVisualFormat("V:[productLabel(32)]", options: [], metrics: nil, views: views)
+        let y = NSLayoutConstraint.constraints(withVisualFormat: "V:[productLabel(32)]", options: [], metrics: nil, views: views)
         
         let constraints = x + y
         

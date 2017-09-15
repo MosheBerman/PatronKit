@@ -17,7 +17,7 @@ import CloudKit
  - parameter error : Populated withy information if the fetch failed, otherwise `nil`.
  
 */
-typealias FetchProductsCompletionHandler = (products : [SKProduct]?, error : NSError?) -> Void
+typealias FetchProductsCompletionHandler = (_ products : [SKProduct]?, _ error : NSError?) -> Void
 
 /**
 
@@ -28,7 +28,7 @@ typealias FetchProductsCompletionHandler = (products : [SKProduct]?, error : NSE
  
 */
 
-typealias PurchaseCompletionHandler = (success : Bool, error : NSError?) -> Void
+typealias PurchaseCompletionHandler = (_ success : Bool, _ error : NSError?) -> Void
 
 /**
  
@@ -39,5 +39,5 @@ typealias PurchaseCompletionHandler = (success : Bool, error : NSError?) -> Void
  
  */
 
-typealias RestorePurchasesCompletionHandler = (success : Bool, error : NSError?) -> Void
+typealias RestorePurchasesCompletionHandler = (_ success : Bool, _ error : NSError?) -> Void
 
