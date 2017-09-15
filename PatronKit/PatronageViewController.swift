@@ -97,6 +97,8 @@ open class PatronageViewController: UITableViewController {
                 let title : String = product.localizedTitle
                 var price : String? = NSLocalizedString("---", comment: "A label for when the price isn't available.")
                 
+                self.numberFormatter.locale = product.priceLocale
+                
                 if let productPrice = self.numberFormatter.string(from: product.price) {
                     price = productPrice
                 }
