@@ -9,20 +9,20 @@
 import UIKit
 import StoreKit
 
-public class PatronageViewController: UITableViewController {
+open class PatronageViewController: UITableViewController {
     
-    var numberFormatter : NSNumberFormatter = NSNumberFormatter()
-    var dateFormatter : NSDateFormatter = NSDateFormatter()
-    var calendar : NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+    var numberFormatter : NumberFormatter = NumberFormatter()
+    var dateFormatter : DateFormatter = DateFormatter()
+    var calendar : Calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.commonInit()
     }
     
     override init(style: UITableViewStyle) {
-        super.init(style: .Grouped)
+        super.init(style: .grouped)
         self.commonInit()
     }
     
@@ -35,41 +35,41 @@ public class PatronageViewController: UITableViewController {
     
     func commonInit() {
         
-        numberFormatter.numberStyle = .CurrencyStyle
-        dateFormatter.timeStyle = .NoStyle
-        dateFormatter.dateStyle = .MediumStyle
+        numberFormatter.numberStyle = .currency
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .medium
         
-        self.tableView.registerClass(PlainTextTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.plain")
-        self.tableView.registerClass(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.loading")
-        self.tableView.registerClass(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.product")
+        self.tableView.register(PlainTextTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.plain")
+        self.tableView.register(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.loading")
+        self.tableView.register(PatronageOptionTableViewCell.self, forCellReuseIdentifier: "com.patronkit.cell.product")
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
         
-        let oneMonth = self.oneUnitBefore(NSDate(), withUnit: NSCalendarUnit.Month)
+        let oneMonth = self.oneUnitBefore(Date(), withUnit: NSCalendar.Unit.month)
         
-        PatronManager.sharedManager.fetchPatronageExpiration { (date : NSDate?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        PatronManager.sharedManager.fetchPatronageExpiration { (date : Date?) -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             })
         }
         
         PatronManager.sharedManager.fetchPatronCountSince(date: oneMonth) { (count, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
             })
         }
         
         PatronManager.sharedManager.fetchAvailablePatronageProducts { (products, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
             })
         }
     }
     
     // MARK: - UITableViewDataSource
     
-    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell : UITableViewCell
         
@@ -79,14 +79,14 @@ public class PatronageViewController: UITableViewController {
             
             if count == 0 /* there are no products  */
             {
-                let loadingCell : PatronageOptionTableViewCell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.loading", forIndexPath: indexPath) as! PatronageOptionTableViewCell
+                let loadingCell : PatronageOptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "com.patronkit.cell.loading", for: indexPath) as! PatronageOptionTableViewCell
                 loadingCell.productLabel.text = NSLocalizedString("Loading Patronage Options...", comment: "A title for a cell that is loading patronage information.")
                 loadingCell.priceLabel.text = "..."
                 
-                loadingCell.accessoryType = .None
+                loadingCell.accessoryType = .none
                 
-                loadingCell.productLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-                loadingCell.priceLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+                loadingCell.productLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+                loadingCell.priceLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                 
                 cell = loadingCell
             }
@@ -97,45 +97,45 @@ public class PatronageViewController: UITableViewController {
                 let title : String = product.localizedTitle
                 var price : String? = NSLocalizedString("---", comment: "A label for when the price isn't available.")
                 
-                if let productPrice = self.numberFormatter.stringFromNumber(product.price) {
+                if let productPrice = self.numberFormatter.string(from: product.price) {
                     price = productPrice
                 }
                 
-                let productCell : PatronageOptionTableViewCell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.product", forIndexPath: indexPath) as! PatronageOptionTableViewCell
+                let productCell : PatronageOptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "com.patronkit.cell.product", for: indexPath) as! PatronageOptionTableViewCell
                 productCell.productLabel.text = title
                 productCell.priceLabel.text = price
                 
-                productCell.accessoryType = .DisclosureIndicator
+                productCell.accessoryType = .disclosureIndicator
                 
-                productCell.productLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-                productCell.priceLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+                productCell.productLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+                productCell.priceLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                 
                 cell = productCell
             }
         }
         else if indexPath.section == 1 {
-            let restoreCell : PlainTextTableViewCell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.plain", forIndexPath: indexPath) as! PlainTextTableViewCell
+            let restoreCell : PlainTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: "com.patronkit.cell.plain", for: indexPath) as! PlainTextTableViewCell
             restoreCell.primaryLabel.text = NSLocalizedString("Restore Purchases", comment: "A label a button that restores previous purchases.")
             
-            restoreCell.accessoryType = .DisclosureIndicator
+            restoreCell.accessoryType = .disclosureIndicator
             
-            restoreCell.primaryLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+            restoreCell.primaryLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
             
             cell = restoreCell
         }
         else {
-            cell = tableView.dequeueReusableCellWithIdentifier("com.patronkit.cell.plain", forIndexPath: indexPath)
-            cell.accessoryType = .None
+            cell = tableView.dequeueReusableCell(withIdentifier: "com.patronkit.cell.plain", for: indexPath)
+            cell.accessoryType = .none
         }
         
         return cell
     }
     
-    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 2 // Products, restore purchases
     }
     
-    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         var count : Int = 0
         
@@ -159,7 +159,7 @@ public class PatronageViewController: UITableViewController {
         return count
     }
     
-    override public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         var title : String? = nil
         
@@ -180,7 +180,7 @@ public class PatronageViewController: UITableViewController {
         return title
     }
     
-    override public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         
         var title : String? = nil
         
@@ -190,10 +190,10 @@ public class PatronageViewController: UITableViewController {
             let count = PatronManager.sharedManager.patronCount
             if count > 1 {
                 
-                title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many people donated recently."), count) as String
+                title = NSString(format: NSLocalizedString("%li people became patrons recently.", comment: "A string counting how many people donated recently.") as NSString, count) as String
             }
             else if count > 0 {
-                title = NSString(format: NSLocalizedString("%li person became a patron recently.", comment: "A string counting how many people donated recently."), count) as String
+                title = NSString(format: NSLocalizedString("%li person became a patron recently.", comment: "A string counting how many people donated recently.") as NSString, count) as String
             }
             else {
                 title = NSLocalizedString("Be the first to become a patron!", comment: "A comment encouraging users to become patrons.")
@@ -209,9 +209,9 @@ public class PatronageViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     
-    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0 {
             
@@ -220,29 +220,43 @@ public class PatronageViewController: UITableViewController {
                 let product : SKProduct = PatronManager.sharedManager.products[indexPath.row]
                 
                 // Step 1. Perform Purchase
-                PatronManager.sharedManager.purchaseProduct(product: product, withCompletionHandler: { (success, error) -> Void in
+                PatronManager.sharedManager.purchaseProduct(product: product, with: { (success, error) -> Void in
                     // Step 2. Fetch new expiration
-                    PatronManager.sharedManager.fetchPatronageExpiration(withCompletionHandler: { (expiration : NSDate?) -> Void in
+                    PatronManager.sharedManager.fetchPatronageExpiration { (expiration : Date?) -> Void in
                         // Step 3. Update patron count
-                        PatronManager.sharedManager.fetchPatronCountSince(date: self.oneUnitBefore(NSDate(), withUnit: .Month), withCompletionHandler: { (count, error) -> Void in
+                        PatronManager.sharedManager.fetchPatronCountSince(date: self.oneUnitBefore(Date(), withUnit: .month), with: { (count, error) -> Void in
                             // Step 4. Update UI
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0,2)), withRowAnimation: .Automatic)
-                                print("Purchase complete. Success: \(success) Error: \(error)")
+                            DispatchQueue.main.async(execute: { () -> Void in
+                                self.tableView.reloadSections(IndexSet(integersIn: NSMakeRange(0,2).toRange()!), with: .automatic)
+                                if let error = error
+                                {
+                                    print("Purchase failed. Error: \(error)")
+                                }
+                                else
+                                {
+                                    print("Purchase complete. Success: \(success)")
+                                }
                             })
                         })
-                    })
+                    }
                 })
                 
             }
         }
         else if indexPath.section == 1 {
-            PatronManager.sharedManager.restorePurchasedProductsWithCompletionHandler(completionHandler: { (success, error) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0,2)), withRowAnimation: .Automatic)
-                    print("Restore complete. Success: \(success) Error: \(error)")
+            PatronManager.sharedManager.restorePurchasedProducts { (success, error) -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.tableView.reloadSections(IndexSet(integersIn: NSMakeRange(0,2).toRange()!), with: .automatic)
+                    if let error = error
+                    {
+                        print("Restore failed. Error: \(error)")
+                    }
+                    else
+                    {
+                        print("Restore complete. Success: \(success)")
+                    }
                 })
-            })
+            }
         }
         
     }
@@ -261,8 +275,8 @@ public class PatronageViewController: UITableViewController {
     
     */
     
-    func oneUnitBefore(date: NSDate, withUnit unit: NSCalendarUnit) -> NSDate {
+    func oneUnitBefore(_ date: Date, withUnit unit: NSCalendar.Unit) -> Date {
         
-        return self.calendar.dateByAddingUnit(unit, value: -1, toDate: date, options: [])!
+        return (self.calendar as NSCalendar).date(byAdding: unit, value: -1, to: date, options: [])!
     }
 }

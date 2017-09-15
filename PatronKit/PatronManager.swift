@@ -16,7 +16,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     public static let sharedManager = PatronManager()
     
     // Patronage Stats
-    public var expirationDate : NSDate? = nil
+    public var expirationDate : Date? = nil
     public var patronCount : Int = 0
     public var reviewCount : Int = 0
     
@@ -36,8 +36,8 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     private let keyExpirationDate : String = "expirationDate"
     
     // CloudKit Accessors
-    private let publicDatabase : CKDatabase = CKContainer.defaultContainer().publicCloudDatabase
-    private let defaultRecordZone : CKRecordZone = CKRecordZone.defaultRecordZone()
+    private let publicDatabase : CKDatabase = CKContainer.default().publicCloudDatabase
+    private let defaultRecordZone : CKRecordZone = CKRecordZone.default()
     
     // Completion Handlers
     private var fetchProductsCompletionHandler : FetchProductsCompletionHandler? = nil
@@ -45,7 +45,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     private var restorePurchaseCompletionHandler : RestorePurchasesCompletionHandler? = nil
     
     // Date calculation
-    let gregorianCalendar : NSCalendar? = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+    let gregorianCalendar : Calendar = Calendar(identifier: .gregorian)
     
     // MARK: - Designated Initializer
     
@@ -63,11 +63,10 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    func fetchAvailablePatronageProducts(withCompletionHandler completionHandler : FetchProductsCompletionHandler) {
+    func fetchAvailablePatronageProducts(withCompletionHandler completionHandler : @escaping FetchProductsCompletionHandler) {
         
-        guard let request : SKProductsRequest = SKProductsRequest(productIdentifiers: self.productIdentifiers) else {
-            return
-        }
+        let request : SKProductsRequest = SKProductsRequest(productIdentifiers: self.productIdentifiers)
+        
         
         self.fetchProductsCompletionHandler = completionHandler
         
@@ -87,22 +86,22 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    func purchaseProduct(product product: SKProduct, withCompletionHandler completionHandler: PurchaseCompletionHandler) {
+    func purchaseProduct(product: SKProduct, with completionHandler: @escaping PurchaseCompletionHandler) {
         
         if (!SKPaymentQueue.canMakePayments()) {
             
             let error : NSError = NSError(domain: "com.patronkit.purchase.failed", code: -1, userInfo: ["reason" : "The payment queue reported that it cannot make payments."])
-            completionHandler(success:false, error: error)
+            completionHandler(false, error)
             
             return
         }
         
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.default().add(self)
         
         self.purchasePatronageCompletionHandler = completionHandler
         
         let payment : SKPayment = SKPayment(product: product)
-        SKPaymentQueue.defaultQueue().addPayment(payment)
+        SKPaymentQueue.default().add(payment)
     }
     
     // MARK: - Restoring Purchases 
@@ -117,10 +116,10 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
 
     */
     
-    func restorePurchasedProductsWithCompletionHandler(completionHandler handler: RestorePurchasesCompletionHandler) {
-        self.restorePurchaseCompletionHandler = handler
+    func restorePurchasedProducts(with completionHandler: @escaping RestorePurchasesCompletionHandler) {
+        self.restorePurchaseCompletionHandler = completionHandler
         
-        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
     // MARK: - Recording a Purchase
@@ -134,39 +133,39 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    func recordPurchaseOfPatronage(payment payment : SKPayment, withCompletion completion:(recorded : Bool) -> Void) {
+    func recordPurchaseOfPatronage(payment : SKPayment, with completion: @escaping (_ recorded : Bool) -> Void) {
         
-        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (recordID : CKRecordID?, error : NSError?) -> Void in
+        CKContainer.default().fetchUserRecordID { (recordID : CKRecordID?, error : Error?) -> Void in
 
             guard let userRecordID = recordID else {
                 
                 print("Couldn't get a logged in user while recording purchase. Bailing.")
                 
-                completion(recorded: false)
+                completion(false)
                 
                 return
                 
             }
             
             // Get the current user.
-            self.publicDatabase.fetchRecordWithID(userRecordID, completionHandler: { (userRecord : CKRecord?, error : NSError?) -> Void in
+            self.publicDatabase.fetch(withRecordID: userRecordID, completionHandler: { (userRecord : CKRecord?, error : Error?) -> Void in
                 
                 if let user = userRecord {
                     
                     // Get the previous expiration, in case the user is extending support.
-                    self.fetchPatronageExpiration(withCompletionHandler: { (expirationDate : NSDate?) -> Void in
+                    self.fetchPatronageExpiration { (expirationDate : Date?) -> Void in
                         
-                        var purchaseDate = NSDate()
+                        var purchaseDate = Date()
                         
                         // If there's an expiration date that's in the future, use that date as the purchase date.
                         if let fetchedExpirationDate = expirationDate {
 
-                            if fetchedExpirationDate.timeIntervalSinceDate(purchaseDate) > 0 {
+                            if fetchedExpirationDate.timeIntervalSince(purchaseDate) > 0 {
                                 purchaseDate = fetchedExpirationDate
                             }
                             else
                             {
-                               "The fetched expiry is in the past, keeping current date as starting point."
+                               print("The fetched expiry is in the past, keeping current date as starting point.")
                             }
                         }
                         else {
@@ -175,26 +174,26 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                         
                         // Create a purchase
                         let purchase : CKRecord = CKRecord(recordType: "Purchase", zoneID: self.defaultRecordZone.zoneID)
-                        purchase[self.keyUserWhoMadePurchase] =  user.recordID.recordName
-                        purchase[self.keyPurchaseDate] = purchaseDate
-                        purchase[self.keyProductIdentifier] = payment.productIdentifier
-                        purchase[self.keyExpirationDate] = self.expirationDateForPayment(payment: payment, withPurchaseDate: purchaseDate)
+                        purchase[self.keyUserWhoMadePurchase] =  user.recordID.recordName as CKRecordValue
+                        purchase[self.keyPurchaseDate] = purchaseDate as CKRecordValue
+                        purchase[self.keyProductIdentifier] = payment.productIdentifier as CKRecordValue
+                        purchase[self.keyExpirationDate] =  (self.expirationDate(for: payment, with: purchaseDate)! as NSDate) as CKRecordValue
                         
                         // Add it to iCloud.
                         let addPurchaseOperation : CKModifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: [purchase], recordIDsToDelete: nil);
                         
-                        addPurchaseOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs : [CKRecordID]?, operationError : NSError?) -> Void in
+                        addPurchaseOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecordIDs : [CKRecordID]?, operationError : Error?) -> Void in
                             
-                            completion(recorded: true)
+                            completion(true)
                             
                         }
                         
-                        self.publicDatabase.addOperation(addPurchaseOperation)
-                    })
+                        self.publicDatabase.add(addPurchaseOperation)
+                    }
                 }
                 else
                 {
-                    completion(recorded: false)
+                    completion(false)
                     print("Got user record ID but failed to get user record.")
                 }
             })
@@ -212,12 +211,12 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
      
      */
     
-    func fetchPatronCountWithCompletion(completionHandler completionHandler: (count : NSInteger, error : NSError?) -> Void) {
+    func fetchPatronCount(with completionHandler: @escaping (_ count : NSInteger, _ error : Error?) -> Void) {
         
         let predicate : NSPredicate = NSPredicate(format: "TRUEFORMAT") // The documentation says to use this for "all of the given type."
         let query : CKQuery = CKQuery(recordType: "User", predicate: predicate)
         
-        self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : NSError?) -> Void in
+        self.publicDatabase.perform(query, inZoneWith: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : Error?) -> Void in
             
             var count = 0;
             
@@ -238,10 +237,17 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             }
             else
             {
-                print("Could not retrieve records from public database: \(error)")
+                if let error = error
+                {
+                    print("Could not retrieve records from public database: \(error)")
+                }
+                else
+                {
+                    print("Could not retrieve records from public database. No further error info.")
+                }
             }
             
-            completionHandler(count: count, error: error)
+            completionHandler(count, error)
         }
     }
     
@@ -253,12 +259,12 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    func fetchPatronCountSince(date date: NSDate, withCompletionHandler completionHandler: (count : NSInteger?, error : NSError?) -> Void) {
+    func fetchPatronCountSince(date : Date, with completion: @escaping (_ count : NSInteger?, _ error : Error?) -> Void) {
         
-        let predicate : NSPredicate = NSPredicate(format: "purchaseDate > %@ ", date)
+        let predicate : NSPredicate = NSPredicate(format: "purchaseDate > %@ ", date as NSDate)
         let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
         
-        self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : NSError?) -> Void in
+        self.publicDatabase.perform(query, inZoneWith: self.defaultRecordZone.zoneID) { (records : [CKRecord]?, error : Error?) -> Void in
             
             var userIDs : Set<String> = Set()
             
@@ -282,7 +288,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             let count = userIDs.count
 
             self.patronCount = count
-            completionHandler(count: count, error: error)
+            completion(count, error)
         }
     }
     
@@ -296,9 +302,9 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    func fetchPatronageExpiration(withCompletionHandler completionHandler: (NSDate?) -> Void) {
+    func fetchPatronageExpiration(with completionHandler: @escaping (Date?) -> Void) {
         
-        CKContainer.defaultContainer().fetchUserRecordIDWithCompletionHandler { (userRecordID : CKRecordID?, error : NSError?) -> Void in
+        CKContainer.default().fetchUserRecordID { (userRecordID : CKRecordID?, error : Error?) -> Void in
             
             guard let userRecordName = userRecordID?.recordName else {
                 
@@ -311,15 +317,15 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             let predicate : NSPredicate = NSPredicate(format: "\(self.keyUserWhoMadePurchase) == %@ ", userRecordName)
             let query : CKQuery = CKQuery(recordType: "Purchase", predicate: predicate)
             
-            self.publicDatabase.performQuery(query, inZoneWithID: self.defaultRecordZone.zoneID, completionHandler: { (records : [CKRecord]?, error : NSError?) -> Void in
+            self.publicDatabase.perform(query, inZoneWith: self.defaultRecordZone.zoneID, completionHandler: { (records : [CKRecord]?, error : Error?) -> Void in
                 
-                var expirationDate : NSDate? = nil
+                var expirationDate : Date? = nil
                 
                 if let purchases = records {
                     
                     for purchase in purchases {
                         
-                        guard let purchaseExpirationDate = purchase[self.keyExpirationDate] as? NSDate else {
+                        guard let purchaseExpirationDate = purchase[self.keyExpirationDate] as? Date else {
                             print("Weird, couldn't find an expiration date for \(purchase.recordID).")
                             continue
                         }
@@ -331,7 +337,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                             continue
                         }
                         
-                        if purchaseExpirationDate.timeIntervalSinceDate(previousExpirationDate) > 0 {
+                        if purchaseExpirationDate.timeIntervalSince(previousExpirationDate) > 0 {
                             print("\(purchaseExpirationDate) is after \(previousExpirationDate)")
                             expirationDate = purchaseExpirationDate
                         }
@@ -341,7 +347,11 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                     print("Found no prior purchases for user.")
                 }
                 
-                print("Latest expiration date \(expirationDate)")
+                if let expirationDate = expirationDate
+                {
+                    print("(\(self.self)): Latest expiration date \(expirationDate)")
+                }
+                
                 self.expirationDate = expirationDate
                 completionHandler(expirationDate)
             })
@@ -350,13 +360,21 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     // MARK: - Counting App Reviews
     
-    func fetchNumberOfAppReviews(withCompletionHandler completionHandler : (reviews : NSInteger?, error : NSError?) -> Void) {
+    func fetchNumberOfAppReviews(with completionHandler : @escaping (_ reviews : NSInteger?, _ error : Error?) -> Void) {
         
-        if let url : NSURL = NSURL(string: "https://itunes.apple.com/lookup?id=\(self.appID)") {
+        guard let appID = self.appID else
+        {
+            print("\(self.self): Cannot fetch reviews without an App ID.")
+            let error : NSError = NSError(domain: "com.patronkit.review", code: -1, userInfo: ["reason" : "The app ID was not configured before calling this method."])
+            completionHandler(0, error)
+            return
+        }
+        
+        if let url = URL(string: "https://itunes.apple.com/lookup?id=\(appID)") {
          
-            let request : NSURLRequest = NSURLRequest(URL: url)
-            let session : NSURLSession = NSURLSession.sharedSession()
-            let task : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (data : NSData?, respone : NSURLResponse?, error: NSError?) -> Void in
+            let request = URLRequest(url: url)
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { (data : Data?, respone : URLResponse?, error: Error?) -> Void in
                 
                 var count : Int = 0
         
@@ -364,7 +382,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                 if let responseDate = data {
                     do {
                         
-                        if let results : Dictionary<String, AnyObject> = try NSJSONSerialization.JSONObjectWithData(responseDate, options: []) as? Dictionary<String, AnyObject> {
+                        if let results : Dictionary<String, AnyObject> = try JSONSerialization.jsonObject(with: responseDate, options: []) as? Dictionary<String, AnyObject> {
                             
                             if let resultSet : [[String : AnyObject]] = results["results"] as? [[String : AnyObject]] {
                             
@@ -388,14 +406,14 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
                             }
                         }
                     }
-                    catch let e as NSError {
+                    catch let e {
                         print("Failed to deserialize response. \(e)")
                     }
                 }
                 
                 self.reviewCount = count
-                completionHandler(reviews: count, error:  error)
-            })
+                completionHandler(count, error)
+            }
             
             task.resume()
             
@@ -413,21 +431,21 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     - parameter payment : An SKPayment that was processed by StoreKit.
     - parameter purchaseDate : The date of purchase.
     
-    - returns : NSDate if we are able to calculate the date, or nil if there was an error.
+    - returns : Date if we are able to calculate the date, or nil if there was an error.
     
     */
     
-    private func expirationDateForPayment(payment payment: SKPayment, withPurchaseDate date: NSDate) -> NSDate? {
+    private func expirationDate(for payment: SKPayment, with purchaseDate: Date) -> Date? {
     
-        var expirationDate : NSDate? = nil
+        var expirationDate : Date? = nil
         
-        if let monthString : String = payment.productIdentifier.componentsSeparatedByString(".").last {
+        if let monthString : String = payment.productIdentifier.components(separatedBy: ".").last {
         
             if let months : Int = Int(monthString) {
-                let components : NSDateComponents = NSDateComponents()
+                var components : DateComponents = DateComponents()
                 components.month = months
             
-                expirationDate = self.gregorianCalendar?.dateByAddingComponents(components, toDate: date, options: [])
+                expirationDate = self.gregorianCalendar.date(byAdding: components, to: purchaseDate, wrappingComponents: false)
             }
         }
         
@@ -442,9 +460,9 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     */
     
-    public func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+    public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
 
-        self.products = response.products.sort({ (productA : SKProduct, productB : SKProduct) -> Bool in
+        self.products = response.products.sorted(by: { (productA : SKProduct, productB : SKProduct) -> Bool in
 
             let priceA = productA.price.floatValue
             let priceB = productB.price.floatValue
@@ -454,7 +472,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
         
         if let handler = self.fetchProductsCompletionHandler {
             
-            handler(products: response.products, error: nil)
+            handler(response.products, nil)
         }
         else
         {
@@ -464,7 +482,7 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
     
     // MARK: - SKPaymentTransactionObserver
     
-    public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for transaction in transactions {
             
@@ -473,40 +491,40 @@ public class PatronManager : NSObject, SKProductsRequestDelegate, SKPaymentTrans
             
             switch state {
                 
-            case.Purchasing:
+            case.purchasing:
                 break
                 
-            case .Purchased:
+            case .purchased:
                 
-                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                SKPaymentQueue.default().finishTransaction(transaction)
                 
-                self.recordPurchaseOfPatronage(payment: payment, withCompletion: { (recorded : Bool) -> Void in
+                self.recordPurchaseOfPatronage(payment: payment, with: { (recorded : Bool) -> Void in
                     
                     if let handler = self.purchasePatronageCompletionHandler
                     {
-                        handler(success: true, error: nil)
+                        handler(true, nil)
                     }
                     
                 })
 
                 break
                 
-            case .Restored:
+            case .restored:
 
                 if let handler = self.restorePurchaseCompletionHandler
                 {
-                    handler(success: true, error: nil)
+                    handler(true, nil)
                 }
                 
                 break
                 
-            case .Failed:
+            case .failed:
                 if let handler = self.purchasePatronageCompletionHandler
                 {
-                    handler(success: false, error: transaction.error)
+                    handler(false, transaction.error as NSError?)
                 }
                 break
-            case .Deferred: break
+            case .deferred: break
                 
             }
             

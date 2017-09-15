@@ -17,7 +17,7 @@ class PlainTextTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
@@ -37,7 +37,7 @@ class PlainTextTableViewCell: UITableViewCell {
         
         let views = ["primaryLabel" : self.primaryLabel]
         
-        let x = NSLayoutConstraint.constraintsWithVisualFormat("H:|-7-[primaryLabel]", options: [NSLayoutFormatOptions.AlignAllCenterY], metrics: nil, views: views)
+        let x = NSLayoutConstraint.constraints(withVisualFormat: "H:|-7-[primaryLabel]", options: [NSLayoutFormatOptions.alignAllCenterY], metrics: nil, views: views)
         self.contentView.addConstraints(x)
     }
 

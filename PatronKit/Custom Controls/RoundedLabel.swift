@@ -18,11 +18,11 @@ import UIKit
     }
     */
     
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        self.backgroundColor = self.tintColor.colorWithAlphaComponent(0.2)
+    override func willMove(toSuperview newSuperview: UIView?) {
+        self.backgroundColor = self.tintColor.withAlphaComponent(0.2)
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
-        self.textAlignment = .Center
+        self.textAlignment = .center
         self.textColor = self.tintColor
     }
 
